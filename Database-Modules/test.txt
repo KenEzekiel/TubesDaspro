@@ -19,8 +19,8 @@ with open(f"Database/test.csv", "w") as f:
         for i in range(len(array)):
             for j in range(len(array[i])):
                 if j == len(array[i]) - 1:
-                    line += str(array[j])
+                    line += str(array[i][j])
                 else:
-                    line += f"{array[j]};"
-            
+                    line += f"{array[i][j]};"
+            line += "\n"
         f.write(line)
