@@ -17,9 +17,9 @@ def append(list: list, input) -> list:
     Function to append an input to a list.
     """
     
-    appendedList = list + [input]
+    list = list + [input]
 
-    return appendedList
+    return list
 
 def isupper(string: str) -> bool:
     """
