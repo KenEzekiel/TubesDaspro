@@ -1,11 +1,13 @@
 import time
 
 def magicconch():
-    x = time.time()
+    x = time.time()                     # Time factor as randomizer
     a = 3
     c = 1
     m = 7
-    state = round(((a*x) + c) % m)
+    state = round(((a*x) + c) % m)      # Linear Congruential Generator (LCG)
+
+    # States and outputs
     if state == 0:
         return "Coba lagi."
     elif state == 1:
@@ -24,6 +26,6 @@ def magicconch():
         return "Coba tanya doswal."
 
 
-for i in range(10):
+"""for i in range(10):
     time.sleep(0.3)
-    print(magicconch())
+    print(magicconch())"""
