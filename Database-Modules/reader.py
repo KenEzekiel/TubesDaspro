@@ -1,4 +1,4 @@
-def parser(filename):
+def reader(filename):
     with open(f"Database/{filename}", "r") as f:
         result = []
         for line in f:
@@ -21,4 +21,3 @@ def parser(filename):
 
     return result
 
-print(parser("game.csv"))
