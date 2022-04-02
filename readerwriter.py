@@ -1,5 +1,6 @@
 from standard import *
 
+# Reader = csv -> matrix of data
 def reader(filename):
     with open(f"Database/{filename}", "r") as f:
         result = []
@@ -38,6 +39,7 @@ def writeline(filename, array):
             line += "\n"                        # end of line
         f.write(line)
 
+# write = array -> csv
 def writer(filename, data_add):
     data = reader(filename)
     data.append(data_add)
@@ -46,4 +48,14 @@ def writer(filename, data_add):
     #print(data)
 
 #add_data = ['1', 'oscta', 'action', '1990', '17000', '6']
-writer("game.csv", ['3', 'octafx', 'action', '1990', '17000', '6'])
+writer("game.csv", ['5', 'mario', 'adventure', '2022', '10000', '5'])
+#print(reader("game.csv"))
+
+# csv -> array of array (reader)
+
+# modifikasi array nya (bisa per indeks)
+# game = reader("game.csv")
+# game[1][0] = 3
+# 3;binomo;action;1990;17000;6
+
+# array of array -> csv
