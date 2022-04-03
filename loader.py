@@ -1,6 +1,12 @@
 import argparse
 import os
 
+"""
+Procedure to load the data into the database, is called automatically
+when running the file in the command prompt with
+> python GUI.py {save_folder}
+"""
+
 parser = argparse.ArgumentParser()
 parser.add_argument("folder", help ="loads the data in the folder into the program")
 args = parser.parse_args()
