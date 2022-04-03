@@ -1,11 +1,12 @@
 import standard
 
 # Reader = csv -> matrix of data
-def reader(filename: str) -> list:
+def reader(folder: str, filename: str) -> list:
     """
-    Function to read a csv file and outputs a matrix of data with index [line][object]
+    Function to read a csv file from a specified folder and file 
+    and outputs a matrix of data with index [line][object]
     """
-    with open(f"Database/{filename}", "r") as f:
+    with open(f"Database/{folder}/{filename}", "r") as f:
         result = []
         for line in f:
             line = line.rstrip()                        # strip '\n'
@@ -25,11 +26,11 @@ def reader(filename: str) -> list:
 
 # writeline -> database filename, array of data
 # tidak dipakai untuk di import
-def writeline(filename: str, array: list):
+def writeline(folder: str, filename: str, array: list):
     """
-    Procedure to write a matrix of data into a csv file
+    Procedure to write a matrix of data into a csv file inside a specified folder in the database
     """
-    with open(f"Database/{filename}", "w") as f:
+    with open(f"Database/{folder}/{filename}", "w") as f:
         line = ""
         for i in range(standard.length(array)):             # Looping for every line of data
             for j in range(standard.length(array[i])):      # Looping for every item in line
@@ -41,15 +42,15 @@ def writeline(filename: str, array: list):
         f.write(line)
 
 # write = array -> csv
-def writer(filename: str, data_add: list):
+def writer(folder: str, filename: str, data_add: list):
     """
     Procedure to add a data into the existing matrix of data and call the writeline procedure
     """
-    data = reader(filename)
+    data = reader(folder, filename)
     data.append(data_add)
-    writeline(filename, data)
+    writeline(folder, filename, data)
 
 
 #add_data = ['1', 'oscta', 'action', '1990', '17000', '6']
-writer("game.csv", ['5', 'mario', 'adventure', '2022', '10000', '5'])
+writer("save-file-1","game.csv", ['5', 'mario', 'adventure', '2022', '10000', '5'])
 #print(reader("game.csv"))
