@@ -1,0 +1,22 @@
+{F02 F03} N
+{F04 F05 F06 F07} M
+{F08 F09} P
+{F10 F11} N
+{F12 F13} K
+{F14} N
+{F15 F16} K
+{F17} P
+
+B01 N
+B02 K
+B03 M
+
+Timeline
+Penyelesaian modul - maks 16 April 2022
+Penyelesaian laporan dan GUI - 23 April 2022
+
+Keterangan :
+N = Noel Christoff
+M = Melvin Kent
+S = Sri Prana
+K = Kenneth Ezekiel

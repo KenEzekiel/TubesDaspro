@@ -24,3 +24,18 @@ with open(f"Database/test.csv", "w") as f:
                     line += f"{array[i][j]};"
             line += "\n"
         f.write(line)
+
+
+Register -> precondition: udah ada array of array data yang valid
+input : hal yang mau diinput
+output : modifikasi terhadap array of array of data
+
+
+# csv -> array of array (reader) (load)
+
+# modifikasi array nya (bisa per indeks)
+# game = reader("game.csv")
+# game[1][0] = 3
+# 3;binomo;action;1990;17000;6
+
+# array of array -> csv (writer) (save)

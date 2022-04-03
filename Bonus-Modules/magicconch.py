@@ -1,10 +1,13 @@
 import time
 
-def magicconch():
+def magicconch() -> str:
+    """
+    Function that generates a random number with LCG and returns a string based on the random number
+    """
     x = time.time()                     # Time factor as randomizer
-    a = 3
-    c = 1
-    m = 7
+    a = 3                               # Multiplier
+    c = 1                               # Increment
+    m = 7                               # Modulus
     state = round(((a*x) + c) % m)      # Linear Congruential Generator (LCG)
 
     # States and outputs
