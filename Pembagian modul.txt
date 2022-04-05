@@ -16,7 +16,7 @@ Penyelesaian modul - maks 16 April 2022
 Penyelesaian laporan dan GUI - 23 April 2022
 
 Keterangan :
-N = Noel Christoff
+N = Noel Christoffel
 M = Melvin Kent
 S = Sri Prana
 K = Kenneth Ezekiel
