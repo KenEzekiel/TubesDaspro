@@ -14,14 +14,14 @@ def reader(folder: str, filename: str) -> list:
             word_holder = ""
             for i in range(standard.length(line)):
                 if line[i] == ";":
-                    line_objects.append(word_holder)
+                    standard.append(line_objects, word_holder)  # line_objects.append(word_holder)
                     word_holder = ""
                 else:
                     word_holder += line[i]
                 if i == standard.length(line)-1:
-                    line_objects.append(word_holder)
+                    standard.append(line_objects, word_holder)  # line_objects.append(word_holder)
                     word_holder = ""
-            result.append(line_objects)
+            standard.append(result, line_objects)  # result.append(line_objects)
     return result
 
 # writeline -> database filename, array of data
@@ -47,7 +47,7 @@ def writer(folder: str, filename: str, data_add: list):
     Procedure to add a data into the existing matrix of data and call the writeline procedure
     """
     data = reader(folder, filename)
-    data.append(data_add)
+    standard.append(data, data_add)  # data.append(data_add)
     writeline(folder, filename, data)
 
 
