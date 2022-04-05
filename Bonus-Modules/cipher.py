@@ -29,6 +29,8 @@ def decrypt(ciphered: str) -> str:
     """
     Decrypts ciphered user password using the Affine cipher.
     """
+
+    # Hardcoded key
     a = 17
     b = 9
     i = 0
