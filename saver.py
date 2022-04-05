@@ -2,7 +2,11 @@ import os
 import readerwriter
 
 filenames = ["game.csv", "kepemilikan.csv", "riwayat.csv", "user.csv"]
-#data = [readerwriter.reader("save-file-1", file) for file in filenames]
+"""
+Struktur data untuk akses file per indeks = 
+["game.csv", "kepemilikan.csv", "riwayat.csv", "user.csv"]
+"""
+data = [readerwriter.reader("save-file-1", file) for file in filenames]
 def save(folder: str, data: list):
     """
     Procedure to save the data in the program to the database

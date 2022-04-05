@@ -14,14 +14,14 @@ def reader(folder: str, filename: str) -> list:
             word_holder = ""
             for i in range(standard.length(line)):
                 if line[i] == ";":
-                    standard.append(line_objects, word_holder)  # line_objects.append(word_holder)
+                    line_objects = standard.append(line_objects, word_holder)  # line_objects.append(word_holder)
                     word_holder = ""
                 else:
                     word_holder += line[i]
                 if i == standard.length(line)-1:
-                    standard.append(line_objects, word_holder)  # line_objects.append(word_holder)
+                    line_objects = standard.append(line_objects, word_holder)  # line_objects.append(word_holder)
                     word_holder = ""
-            standard.append(result, line_objects)  # result.append(line_objects)
+            result = standard.append(result, line_objects)  # result.append(line_objects)
     return result
 
 # writeline -> database filename, array of data
@@ -47,10 +47,10 @@ def writer(folder: str, filename: str, data_add: list):
     Procedure to add a data into the existing matrix of data and call the writeline procedure
     """
     data = reader(folder, filename)
-    standard.append(data, data_add)  # data.append(data_add)
+    data = standard.append(data, data_add)  # data.append(data_add)
     writeline(folder, filename, data)
 
 
 #add_data = ['1', 'oscta', 'action', '1990', '17000', '6']
-writer("save-file-1","game.csv", ['5', 'mario', 'adventure', '2022', '10000', '5'])
+#writer("save-file-1","game.csv", ['5', 'mario', 'adventure', '2022', '10000', '5'])
 #print(reader("game.csv"))

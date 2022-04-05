@@ -1,4 +1,5 @@
 import loader
+import readerwriter
 
 running = False
 if loader.save_folder in loader.all_folder:
@@ -10,4 +11,7 @@ else:
 
 while running:
     command = input("command: ")
+    filenames = ["game.csv", "kepemilikan.csv", "riwayat.csv", "user.csv"]
+    data = [readerwriter.reader(loader.save_folder, file) for file in filenames]
+    print(data)
     running = False
