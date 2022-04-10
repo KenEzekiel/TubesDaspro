@@ -16,4 +16,4 @@ def history(save_folder: str):
             for j in range(standard.length(data_history[i])):
                 print(data_history[i][j], end=" | ")
             print("")
-history("save-file-1")
+#history("save-file-1")
