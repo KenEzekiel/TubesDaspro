@@ -23,7 +23,7 @@ def procedure_topup(username: str, balance: int, user_data: list):
 
     
         
-def topup(data):
+def topup(data: str):
     """
     Procedure to get input and inputs it into the procedure_topup procedure
     """
