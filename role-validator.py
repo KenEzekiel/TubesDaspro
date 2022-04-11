@@ -14,4 +14,4 @@ def is_admin(username, save_folder):
     else:
         return False
 
-print(is_admin("kenezekiel", "save-file-1"))
+#print(is_admin("kenezekiel", "save-file-1"))
