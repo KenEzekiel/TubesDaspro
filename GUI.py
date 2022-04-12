@@ -17,15 +17,38 @@ else:
 filenames = ["game.csv", "kepemilikan.csv", "riwayat.csv", "user.csv"]
 data = [rw.reader(loader.save_folder, file) for file in filenames]
 
-callable_commands = {
-    'history': history,
-    'topup' : topup
+admin_callable_commands = {
+    'register' : 'register',
+    'login' : 'login',
+    'add-game' : 'add-game',
+    'change-game' : 'change_game',
+    'change-stock' : 'change-stock',
+    'lihat-listing' : 'lihat',
+    'search_at_store' : 'search_at_store',
+    'topup' : topup,
+    'help' : 'help',
+    'save' : 'save',
+    'exit' : 'exit'
 }
+
+user_callable_commands = {
+    'login' : 'login',
+    'listing' : 'listing',
+    'buy' : 'buy',
+    'lihat-listing' : 'lihat',
+    'search' : 'search',
+    'search_at_store' : 'search_at_store',
+    'history': history,
+    'help' : 'help',
+    'save' : 'save',
+    'exit' : 'exit'
+}
+
 
 def inputCommand():
     command = input_command.get()
     input_command.delete(0, tkinter.END)
-    if command in callable_commands:
+    if command in admin_callable_commands:
         if command == "history":
             history.historyFromMatrix(data[2])
             last_idx = output_field.index("end")
