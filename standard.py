@@ -12,6 +12,7 @@ def length(input) -> int:
     
     return count
 
+
 def append(list_: list, input) -> list:
     """
     Function to append an input to a list.
@@ -20,6 +21,7 @@ def append(list_: list, input) -> list:
     list_ = list_ + [input]
 
     return list_
+
 
 def is_upper(string: str) -> bool:
     """
@@ -31,6 +33,7 @@ def is_upper(string: str) -> bool:
     else:
         return False
 
+
 def is_lower(string: str) -> bool:
     """
     Function to check if a string consists entirely of lowercase letters.
@@ -40,6 +43,7 @@ def is_lower(string: str) -> bool:
         return True
     else:
         return False
+
 
 # def join_list(string: str, iterable) -> str:
 #     """
@@ -53,6 +57,7 @@ def is_lower(string: str) -> bool:
 #         output += f"{i}{string}"
     
 #     return output
+
 
 # def numbered_list(list_: list, start=0) -> list:
 #     """
