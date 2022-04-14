@@ -11,7 +11,7 @@ def history(save_folder: str):
     length_data = standard.length(data_history)
 
     if length_data == 1:
-        print("Sorry, you haven't bought any game yet. Type beli_game to buy some game")
+        print("Sorry, you haven't bought any game yet. Enter buy_game to buy some game")
     else:
         print("NO | ID | NAMA | HARGA | USER ID | TAHUN BELI")
         for i in range(1, length_data):
@@ -20,15 +20,16 @@ def history(save_folder: str):
                 print(data_history[i][j], end=" | ")
             print("")
 
+
 def historyFromMatrix(hist_data: list):
     """
     Procedure to print the content of riwayat.csv array from the temporary data matrix
     """
-    
+
     length_data = standard.length(hist_data)
 
     if length_data == 1:
-        print("Sorry, you haven't bought any game yet. Type beli_game to buy some game")
+        print("Sorry, you haven't bought any game yet. Enter buy_game to buy some game")
     else:
         print("NO | ID | NAMA | HARGA | USER ID | TAHUN BELI")
         for i in range(1, length_data):

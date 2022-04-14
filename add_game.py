@@ -1,12 +1,14 @@
 import standard
 
+
 # not to be imported
 def new_game(game_data : list) :
     """
     Procedure to get input for a new game with validation
     """
+
     complete = False 
-    while complete == False :                       # loop for input validation
+    while complete == False:                       # loop for input validation
         name = str(input("Masukkan nama game: "))
         category = str(input("Masukkan kategori: "))
         release_year = str(input("Masukkan tahun rilis: "))
@@ -22,10 +24,12 @@ def new_game(game_data : list) :
 
     return new_data
 
+
 def add_game (game_data : list) :
     """
     Procedure to add a new valid game to the inventory
     """
+    
     new_data = new_game(game_data)
     print(new_data)
     game_data = standard.append(game_data, new_data) 
