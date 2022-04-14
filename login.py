@@ -2,7 +2,8 @@ import cipher
 import standard
 
 
-def login(save_folder: str, user_data: list[list[str]]):  # user_data is the user.csv of a save folder
+# user_data is the user.csv of a save folder
+def login(save_folder: str, user_data: list[list[str]]):
     """
     Procedure for login
     """
@@ -13,7 +14,8 @@ def login(save_folder: str, user_data: list[list[str]]):  # user_data is the use
     user_valid = False
 
     # Checks if the username is present in database
-    for i in range(1, standard.length(user_data)):  # Loop for every line in file user.csv (index 3 on folder save) (ignore the first line)
+    # Loop for every line in file user.csv (index 3 on folder save) (ignore the first line)
+    for i in range(1, standard.length(user_data)):
         if username == user_data[i][1]:
             user_valid = True
             global user_line_index
