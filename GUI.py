@@ -61,7 +61,7 @@ def inputCommand():
 
     if not logged_in:
 
-        if command not in ['help', 'login', 'register']:
+        if command not in ['help', 'login']:
             last_idx = output_field.index("end")
             output_field.insert(last_idx, f"You are not logged in. Please log in first. Enter \"help\" for more info.")
         
