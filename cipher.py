@@ -1,6 +1,7 @@
-# This cipher uses the Affine Cipher.
 import standard
 
+
+# This cipher uses the Affine Cipher.
 def encrypt(password: str) -> str:
     """
     Encrypts user password using the Affine cipher.
