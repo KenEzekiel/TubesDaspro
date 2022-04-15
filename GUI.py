@@ -52,12 +52,13 @@ user_callable_commands = [
     'exit'
 ]
 
+logged_in = False
+
 # the function still doesn't work. it will always make logged_in = False everytime u call it. pls fix if u have any idea, i'm really sleepy rn lol
 def inputCommand():
+    global logged_in
     command = input_command.get()
     input_command.delete(0, tkinter.END)
-
-    logged_in = False
 
     if not logged_in:
 
@@ -69,16 +70,20 @@ def inputCommand():
         elif command == 'help':
             pass
 
-        elif command == 'login':
-            login.login(loader.save_folder, data[3])
-            last_idx = output_field.index('end')
-            user_info = data[3][login.user_line_index]
-            output_field.insert(last_idx, 'Successfully logged in')
-            print('Successfully logged in')
-            logged_in = True
+            last_index = command_field.index("end")
+            command_field.insert(last_index, command)
 
-        last_index = command_field.index("end")
-        command_field.insert(last_index, command)
+        elif command == 'login':
+            login_valid = login.login(loader.save_folder, data[3])
+            if login_valid:
+                last_idx = output_field.index('end')
+                user_info = data[3][login.user_line_index]
+                output_field.insert(last_idx, 'Successfully logged in')
+                print('Successfully logged in')
+                logged_in = True
+
+                last_index = command_field.index("end")
+                command_field.insert(last_index, command)
 
     else:
 
@@ -222,7 +227,6 @@ command_field.grid(row=1, column=1)
 output_field.grid(row=1, column=2)
 
 #---------------------------------------------
-
 
 if running:
     root.mainloop()

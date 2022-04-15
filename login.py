@@ -24,7 +24,10 @@ def login(save_folder: str, user_data: list[list[str]]):
     if user_valid:
         if cipher.decrypt(user_data[user_line_index][3]) == password:
             print(f'Welcome to BNMO, {username}!')
+            return True
         else:
             print('Username not found or wrong password')
+            return False
     else:
         print('Username not found or wrong password')
+        return False
