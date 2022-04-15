@@ -1,5 +1,6 @@
 import standard
 
+
 # not to be imported
 def index_constructor (game_data : list) :
     """
@@ -20,6 +21,7 @@ def new_game(game_data : list) :
     """
     Procedure to get input for a new game with validation
     """
+
     complete = False 
     while complete == False :                       # loop for input completeness validation
         name = str(input("Insert game name: "))
@@ -38,10 +40,12 @@ def new_game(game_data : list) :
 
     return new_data
 
+
 def add_game (game_data : list) :
     """
     Procedure to add a new valid game to the inventory
     """
+    
     new_data = new_game(game_data)
     game_data = standard.append(game_data, new_data) 
     print("Congratulations! Adding game succeded", new_data[1] + "." )

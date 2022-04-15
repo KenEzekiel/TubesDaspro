@@ -1,10 +1,18 @@
+# Python standard library
+import os
 import tkinter
+
+# Local library
 import standard
 import loader
 import readerwriter as rw
 import history
-import topup 
-import os
+import login
+import topup
+import register
+import search_my_game
+
+
 #---------- Main Program Function ------------
 running = False
 if loader.save_folder in loader.all_folder:
@@ -17,58 +25,142 @@ else:
 filenames = ["game.csv", "kepemilikan.csv", "riwayat.csv", "user.csv"]
 data = [rw.reader(loader.save_folder, file) for file in filenames]
 
-admin_callable_commands = {
-    'register' : 'register',
-    'login' : 'login',
-    'add-game' : 'add-game',
-    'change-game' : 'change_game',
-    'change-stock' : 'change-stock',
-    'lihat-listing' : 'lihat',
-    'search_at_store' : 'search_at_store',
-    'topup' : topup,
-    'help' : 'help',
-    'save' : 'save',
-    'exit' : 'exit'
-}
+admin_callable_commands = [
+    'register',
+    'login',
+    'add_game',  # tambah_game in F04
+    'change_game',  # ubah_game in F05
+    'change_stock',  # ubah_stok in F06
+    'list_available_game',  # list_game_toko in F07
+    'search_at_store',  # search_game_at_store in F11
+    'topup',
+    'help',
+    'save',
+    'exit'
+]
 
-user_callable_commands = {
-    'login' : 'login',
-    'listing' : 'listing',
-    'buy' : 'buy',
-    'lihat-listing' : 'lihat',
-    'search' : 'search',
-    'search_at_store' : 'search_at_store',
-    'history': history,
-    'help' : 'help',
-    'save' : 'save',
-    'exit' : 'exit'
-}
+user_callable_commands = [
+    'login',
+    'list_available_game',  # list_game_toko in F07
+    'buy_game',
+    'list_my_game',  # list_game in F09
+    'search_my_game',
+    'search_at_store',  # search_game_at_store in F11
+    'history',  # riwayat in F13
+    'help',  
+    'save',
+    'exit'
+]
 
+logged_in = False
 
+# the function still doesn't work. it will always make logged_in = False everytime u call it. pls fix if u have any idea, i'm really sleepy rn lol
 def inputCommand():
+    global logged_in
     command = input_command.get()
     input_command.delete(0, tkinter.END)
-    if command in admin_callable_commands:
-        if command == "history":
-            history.historyFromMatrix(data[2])
-            last_idx = output_field.index("end")
-            output_field.insert(last_idx, "History matrix printed")
-        elif command == "topup":
-            topup.topup(data[3])
-            print(data[3])
-            last_idx = output_field.index("end")
-            output_field.insert(last_idx, "User balance updated")
 
-        last_index = command_field.index("end")
-        command_field.insert(last_index, command)
+    if not logged_in:
+
+        if command not in ['help', 'login']:
+            last_idx = output_field.index("end")
+            output_field.insert(last_idx, f"You are not logged in. Please log in first. Enter \"help\" for more info.")
+            print(f"You are not logged in. Please log in first. Enter \"help\" for more info.")
+
+        elif command == 'help':
+            pass
+
+            last_index = command_field.index("end")
+            command_field.insert(last_index, command)
+
+        elif command == 'login':
+            login_valid = login.login(loader.save_folder, data[3])
+            if login_valid:
+                last_idx = output_field.index('end')
+                user_info = data[3][login.user_line_index]
+                output_field.insert(last_idx, 'Successfully logged in')
+                print('Successfully logged in')
+                logged_in = True
+
+                last_index = command_field.index("end")
+                command_field.insert(last_index, command)
+
     else:
-        print("Command Not Found")
+
+        if command in admin_callable_commands and command not in user_callable_commands and user_info[4] == 'Admin':
+
+            if command == 'register':
+                register.register(loader.save_folder, data[3])
+                last_idx = output_field.index('end')
+                output_field.insert(last_idx, 'Successfully registered new user')
+
+            elif command == 'add_game':
+                pass
+
+            elif command == 'change_game':
+                pass
+
+            elif command == 'change_stock':
+                pass
+
+            elif command == "topup":
+                topup.topup(data[3])
+                print(data[3])
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "User balance updated")
+
+            last_index = command_field.index("end")
+            command_field.insert(last_index, command)
+
+        elif command in user_callable_commands and command not in admin_callable_commands and user_info[4] == 'User':
+            
+            if command == 'buy_game':
+                pass
+
+            elif command == 'list_my_game':
+                pass
+
+            elif command == 'search_my_game':
+                search_my_game.search_my_game(data[1], data[3], data[0])
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "Search result printed")
+
+            elif command == 'history':
+                history.historyFromMatrix(data[2])
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "History matrix printed")
+
+            last_index = command_field.index("end")
+            command_field.insert(last_index, command)
+
+        elif command in user_callable_commands and command in admin_callable_commands:
+            
+            if command == 'login':
+                pass
+
+            elif command == 'list_available_game':
+                pass
+
+            elif command == 'search_at_store':
+                pass
+
+            elif command == 'help':
+                pass
+
+            elif command == 'save':
+                pass
+
+            elif command == 'exit':
+                pass
+
+            last_index = command_field.index("end")
+            command_field.insert(last_index, command)
     
     
 #--------------- TKINTER ---------------------
 root = tkinter.Tk()
 root.geometry("480x640")
-root.title("PROGRAM")
+root.title("BNMO")
 root.iconbitmap("resources/logo_itb.ico")
 font_tuple = ("Arial", 10)
 
@@ -136,9 +228,6 @@ output_field.grid(row=1, column=2)
 
 #---------------------------------------------
 
-
 if running:
     root.mainloop()
     running = False
-
-    
