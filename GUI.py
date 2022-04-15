@@ -64,7 +64,8 @@ def inputCommand():
         if command not in ['help', 'login']:
             last_idx = output_field.index("end")
             output_field.insert(last_idx, f"You are not logged in. Please log in first. Enter \"help\" for more info.")
-        
+            print(f"You are not logged in. Please log in first. Enter \"help\" for more info.")
+
         elif command == 'help':
             pass
 
@@ -73,6 +74,7 @@ def inputCommand():
             last_idx = output_field.index('end')
             user_info = data[3][login.user_line_index]
             output_field.insert(last_idx, 'Successfully logged in')
+            print('Successfully logged in')
             logged_in = True
 
         last_index = command_field.index("end")
