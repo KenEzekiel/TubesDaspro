@@ -5,7 +5,7 @@ import standard
 # user_data is the user.csv of a save folder
 def login(save_folder: str, user_data: list[list[str]]):
     """
-    Procedure for login
+    Function for login
     """
 
     username = input('Masukkan username: ')
