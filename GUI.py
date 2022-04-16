@@ -76,6 +76,7 @@ def inputCommand():
         elif command == 'login':
             login_valid = login.login(loader.save_folder, data[3])
             if login_valid:
+                global user_info
                 last_idx = output_field.index('end')
                 user_info = data[3][login.user_line_index]
                 output_field.insert(last_idx, 'Successfully logged in')
