@@ -1,5 +1,5 @@
 id;nama;kategori;tahun_rilis;harga;stok
-GAME1;binomo;action;1990;17000;6
-GAME2;oscta;action;1990;17000;6
-GAME5;mario;adventure;1990;10000;5
+GAME001;binomo;action;1990;17000;6
+GAME002;oscta;action;1990;17000;6
+GAME005;mario;adventure;1990;10000;5
 GAME101;idk;unknown;1990;120000;1
