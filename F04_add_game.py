@@ -1,8 +1,7 @@
 import standard
 
-
 # not to be imported
-def index_constructor (game_data : list) :
+def index_constructor (game_data : list) -> list :
     """
     Function for generating index for new game automatically
     """
@@ -14,12 +13,13 @@ def index_constructor (game_data : list) :
         new_index = "GAME0" + str(new_number)
     else :
         new_index = "GAME" + str(new_number)
+
     return new_index
 
 # not to be imported    
-def new_game(game_data : list) :
+def new_game(game_data : list) -> list :
     """
-    Procedure to get input for a new game with validation
+    Function to get a new data of game with validation
     """
 
     complete = False 
@@ -41,9 +41,9 @@ def new_game(game_data : list) :
     return new_data
 
 
-def add_game (game_data : list) :
+def add_game (game_data : list) -> list :
     """
-    Procedure to add a new valid game to the inventory
+    Function to add a new valid game to the inventory
     """
     
     new_data = new_game(game_data)
@@ -55,11 +55,7 @@ def add_game (game_data : list) :
 
 """
 # Example on how to use
-print(data[0])
-data[0] = add_game(data[0])
-print(data[0])
-
-data =[["GAME001","binomo","action","1990",17000,6], ["GAME002","oscta","action","1990",17000,6], ["GAME003","mario","adventure","2022",10000,5]]
+data =[["Heading"], ["GAME001","binomo","action","1990",17000,6], ["GAME002","oscta","action","1990",17000,6], ["GAME003","mario","adventure","2022",10000,5]]
 data = add_game(data)
 print(data)
 

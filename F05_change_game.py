@@ -1,7 +1,13 @@
 import standard
 
 def change_game (game_data : list):
+    """
+    Procedure to change game information from game data matrix
+    """
+
     id = str(input("Insert game ID: "))
+
+    # finding matching game ID in game data matrix
     found = False
     i = 1
     while (found == False) and (i < standard.length(game_data)):      # Loop for every line in file game.csv (index 3 on folder save) (ignore the first line)
@@ -10,9 +16,11 @@ def change_game (game_data : list):
             found = True
         else :
             i += 1
+
     if found == False :
         print("There's no game with that ID!")
-    else :    
+
+    else :      # ID is found
         name = str(input("Insert game name: "))
         if name != "" :
             game_data[line_index][1] = name
@@ -26,7 +34,9 @@ def change_game (game_data : list):
         if price != "" :
             game_data[line_index][4] = int(price)
 
-# data =[[1,"binomo","action","1990",17000,6], [1,"oscta","action","1990",17000,6], [5,"mario","adventure","2022",10000,5]]
-# change_game(data)
-# print(data)
-
+"""
+# Example on how to use
+data =[["Heading"], ["GAME001","binomo","action","1990",17000,6], ["GAME002","oscta","action","1990",17000,6], ["GAME003","mario","adventure","2022",10000,5]]
+change_game(data)
+print(data)
+"""

@@ -110,6 +110,7 @@ def sorting (game_data : list) :
         else :
             print("Invalid sorting mode. Please try again!")
 
+    # Generate parsing for sorted data
     for i in range (standard.length(sorted)): 
         print(str(i+1) + ".", end=" ")
         for j in range (6) :
@@ -123,7 +124,7 @@ def sorting (game_data : list) :
         print("")
 
 
-data =[["headings"], [1,"binomo","action","3000",17000,6], [1,"oscta","action","3001",17300,6], [5,"mario","adventure","1900",10000,5]]
+data =[["headings"], ["GAME001","binomo","action","3000",17000,6], ["GAME002" ,"oscta","action","3001",17300,6], ["GAME003","mario","adventure","1900",10000,5]]
 # sorted = price_descending(data)
 # print(sorted)
 
