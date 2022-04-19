@@ -4,7 +4,7 @@ import tkinter
 
 # Local library
 import standard
-import loader
+import F15_load
 import readerwriter as rw
 import history
 import login
@@ -15,15 +15,15 @@ import search_my_game
 
 #---------- Main Program Function ------------
 running = False
-if loader.save_folder in loader.all_folder:
+if F15_load.save_folder in F15_load.all_folder:
     print("Loading...")
     print('Welcome to the "Binomo" Interface')
     running = True
 else:
-    print(f'Folder "{loader.save_folder}" not found.')
+    print(f'Folder "{F15_load.save_folder}" not found.')
 
 filenames = ["game.csv", "kepemilikan.csv", "riwayat.csv", "user.csv"]
-data = [rw.reader(loader.save_folder, file) for file in filenames]
+data = [rw.reader(F15_load.save_folder, file) for file in filenames]
 
 admin_callable_commands = [
     'register',
@@ -74,7 +74,7 @@ def inputCommand():
             command_field.insert(last_index, command)
 
         elif command == 'login':
-            login_valid = login.login(loader.save_folder, data[3])
+            login_valid = login.login(F15_load.save_folder, data[3])
             if login_valid:
                 global user_info
                 last_idx = output_field.index('end')
@@ -91,7 +91,7 @@ def inputCommand():
         if command in admin_callable_commands and command not in user_callable_commands and user_info[4] == 'Admin':
 
             if command == 'register':
-                register.register(loader.save_folder, data[3])
+                register.register(F15_load.save_folder, data[3])
                 last_idx = output_field.index('end')
                 output_field.insert(last_idx, 'Successfully registered new user')
 

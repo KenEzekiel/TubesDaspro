@@ -6,7 +6,7 @@ def history(hist_data: list):
     """
 
     if standard.length(hist_data) == 1 :
-        print("Sorry, you haven't bougth any game yet. Enter buy_game to bur some game.")    
+        print("Sorry, you haven't bougth any game yet. Enter buy_game to buy some game.")    
     
     else :
         # generate a temporary list for hosting data without changing the source
