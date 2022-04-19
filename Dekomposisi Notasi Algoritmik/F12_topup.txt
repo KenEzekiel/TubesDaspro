@@ -1,0 +1,55 @@
+{DICTIONARY}
+    {
+    
+    function length (a) -> integer
+    }
+
+{FUNCTION/PROCEDURE DEFINITION}
+Function function_topup (input username : string, input balance : integer, input user_data : array) -> array
+    {Function to topup the user's balance}
+    
+    {LOCAL DICTIONARY}
+    {
+    user_valid : boolean
+    line_index, current_balance : integer
+    }
+
+    {ALGORITHM}
+    user_valid <- False
+    line_index <- 0
+
+    i traversal [2..length(user_data)]
+
+        {Checks if the user is a valid user or not}
+        if username = user_data[i][2] then
+            user_valid <- True
+            line_index <- i
+    
+    if user_valid = True then
+
+        current_balance <- user_data[line_index][6]
+
+        if balance + current_balance < 0 then
+            output("Input not valid")
+        else
+            current_balance <- current_balance + balance
+            user_data[line_index][6] <- current_balance
+            -> user_data
+    
+    else
+        output("Username", username, "not found")
+
+Function topup (input data : array) -> array
+    {Function to get input and inputs it into the function_topup}
+
+    {LOCAL DICTIONARY}
+    {
+    username : string
+    balance : integer
+    }
+
+    {ALGORITHM}
+
+    input(username, balance)
+    data <- function_topup(username, balance, data)
+    -> data

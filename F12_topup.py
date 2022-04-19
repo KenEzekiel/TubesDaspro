@@ -1,9 +1,10 @@
 import standard
 #import readerwriter
 
-def procedure_topup(username: str, balance: int, user_data: list[list[str]]):  # user_data is the user.csv of a save folder
+# Not to be imported
+def function_topup(username: str, balance: int, user_data: list[list[str]]) -> list[list[str]]:  # user_data is the user.csv of a save folder
     """
-    Procedure to top up the balance of a user 
+    Function to top up the balance of a user 
     """
 
     user_valid = False
@@ -30,14 +31,15 @@ def procedure_topup(username: str, balance: int, user_data: list[list[str]]):  #
         print(f'Username "{username}" not found')
 
 
-def topup(data: list[list]):
+# To be imported
+def topup(data: list[list[str]]) -> list[list[str]]:
     """
-    Procedure to get input and inputs it into the procedure_topup procedure
+    Function to get input and inputs it into the function_topup function
     """
 
     username = input("Input username: ")
     balance = int(input("Input balance: "))
-    data = procedure_topup(username, balance, data)
+    data = function_topup(username, balance, data)
     return data
 
 """
