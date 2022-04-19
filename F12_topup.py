@@ -24,6 +24,7 @@ def procedure_topup(username: str, balance: int, user_data: list[list[str]]):  #
         else:
             current_balance += balance
             user_data[line_index][5] = current_balance
+            return user_data
             
     else:
         print(f'Username "{username}" not found')
@@ -36,12 +37,13 @@ def topup(data: list[list]):
 
     username = input("Input username: ")
     balance = int(input("Input balance: "))
-    procedure_topup(username, balance, data)
+    data = procedure_topup(username, balance, data)
+    return data
 
 """
 # Example on how to use
 my_data = readerwriter.reader("save-file-1", "user.csv")
 print(my_data)
-topup(my_data)
+my_data = topup(my_data)
 print(my_data)
 """

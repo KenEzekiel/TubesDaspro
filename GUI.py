@@ -113,19 +113,19 @@ def inputCommand():
 
 
             elif command == 'change_game':
-                F05_change_game.change_game(data[0])
+                data[0] = F05_change_game.change_game(data[0])
                 last_idx = output_field.index("end")
                 output_field.insert(last_idx, "Changed game")
 
 
             elif command == 'change_stock':
-                F06_change_stock.change_stock(data[0])
+                data[0] = F06_change_stock.change_stock(data[0])
                 last_idx = output_field.index("end")
                 output_field.insert(last_idx, "Changed game stock")
 
 
             elif command == "topup":
-                F12_topup.topup(data=data[3])
+                data[3] = F12_topup.topup(data=data[3])
                 #print(data[3])
                 last_idx = output_field.index("end")
                 output_field.insert(last_idx, "User balance updated")

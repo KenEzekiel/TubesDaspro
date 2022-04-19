@@ -32,10 +32,11 @@ def change_stock(game_data : list) :
                 print(game_data[line_index][1], "stock addition succeeded. Current stock:", game_data[line_index][5])
             else :      # added_stock < 0
                 print(game_data[line_index][1], "stock substraction succeeded. Current stock:", game_data[line_index][5])
+            return game_data
                 
 """
 # Example on how to use
 data =[["Heading"], ["GAME001","binomo","action","1990",17000,6], ["GAME002","oscta","action","1990",17000,6], ["GAME003","mario","adventure","2022",10000,5]]
-change_stock(data)
+data = change_stock(data)
 print(data)
 """

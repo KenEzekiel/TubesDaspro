@@ -30,3 +30,9 @@ def history(hist_data: list):
                 
                 print((" " * (character_amount- standard.length(str(data_history[i][j])))), "| ", end="")
             print("")
+
+"""
+# Example on how to use
+data = [["Heading"],["1", "binomo", "15000", "3", "1990"]]
+history(data)
+"""

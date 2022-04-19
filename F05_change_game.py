@@ -33,10 +33,11 @@ def change_game (game_data : list):
         price = str(input("Insert price: "))
         if price != "" :
             game_data[line_index][4] = int(price)
+        return game_data
 
 """
 # Example on how to use
 data =[["Heading"], ["GAME001","binomo","action","1990",17000,6], ["GAME002","oscta","action","1990",17000,6], ["GAME003","mario","adventure","2022",10000,5]]
-change_game(data)
+data = change_game(data)
 print(data)
 """
