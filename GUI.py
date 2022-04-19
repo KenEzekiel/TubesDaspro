@@ -125,7 +125,6 @@ def inputCommand():
 
 
             elif command == "topup":
-                global data
                 F12_topup.topup(data=data[3])
                 #print(data[3])
                 last_idx = output_field.index("end")
@@ -197,6 +196,8 @@ def inputCommand():
             command_field.insert(last_index, command)
             print("")
     
+def exit_command():
+    F17_exit.exit(data)    
     
 #--------------- TKINTER ---------------------
 root = tkinter.Tk()
@@ -258,7 +259,7 @@ output_field.insert(1, "Output: ")
 exit_button = tkinter.Button(exit_button_frame,
                             text="Exit", 
                             bg="#e53835",
-                            command = quit,
+                            command = exit_command,
                             width = 5,
                             height = 2)
 input_command.grid(row=1, column=1)
