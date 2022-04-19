@@ -1,1 +1,49 @@
-NOTAL
+{DICTIONARY}
+    {
+    hist_data : array of array
+    
+    function length (a) -> integer
+    function append (a, array) -> array 
+    }
+
+{FUNCTION/PROCEDURE DEFINITION}
+Procedure history (input hist_data : array of array)
+
+    {Procedure to print the content of riwayat.csv array in the working data_history (temporary data matrix)}
+
+    {I.S. hist_data is defined and not empty (minimum 1 element)
+    F.S. hist_data is printed}
+
+    {LOCAL DICTIONARY}
+    {
+    data_history : array of array
+    i, j, k, l, character_amount : integer
+    }
+
+    {ALGORITHM}
+    if length(hist_data) = 1 then
+        output("Sorry, you haven't bougth any game yet. Enter buy_game to buy some game.)
+    else
+        {Generating a temporary list to host data without changing the original source}
+        data_history <- array [1..length(hist_data)] of "*"
+        i traversal [2..length(hist_data)]
+            data_history[i] <- hist_data[i+1] 
+        
+        data_history <- append (["HEADING"], data_history)
+
+        {Generating parsing for non-empty data_history list}
+        i traversal [1..length(data_history)]
+            output(i, ".", end: " ")
+            
+            j traversal [1..6]
+                output(data_history[i][j], end: "")
+                character_amount <- 0
+
+                k traversal [1..length(data_history)]
+                    if length(data_history[k][j]) > character_amount then
+                        character_amount <- length(data_history[k][j])
+                
+                l traversal [1..character_amount-length(data_history[i][j])]
+                    output(" ", end: "")
+                output("| ", end:"")
+                output("\n")
