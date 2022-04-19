@@ -1,6 +1,9 @@
 import readerwriter
 
-def is_admin(username, save_folder):
+def is_admin(username: str, save_folder: str):
+    """
+    Function to check if the user is an admin or not
+    """
     user_data = readerwriter.reader(save_folder, "user.csv")
     line_index = 0
     for i in range(1, len(user_data)):

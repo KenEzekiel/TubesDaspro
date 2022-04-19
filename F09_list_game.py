@@ -22,4 +22,4 @@ list_game(data)
 
 # Input example that will result in a valid and proper output
 data = [["GAME001", "BNMO - Play Along With Crypto", "Adventure", 2022, 100000], ["GAME069", "Python Gemink", "Programming", 1991, 69000], ["GAME666", "Hehehe", "Comedy", 2012, 666000]]
-list_game(data)
+# list_game(data)

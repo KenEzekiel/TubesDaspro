@@ -1,4 +1,4 @@
-import cipher
+import B01_cipher
 import standard
 
 
@@ -22,7 +22,7 @@ def login(save_folder: str, user_data: list[list[str]]):
             user_line_index = i
 
     if user_valid:
-        if cipher.decrypt(user_data[user_line_index][3]) == password:
+        if B01_cipher.decrypt(user_data[user_line_index][3]) == password:
             print(f'Welcome to BNMO, {username}!')
             return True
         else:

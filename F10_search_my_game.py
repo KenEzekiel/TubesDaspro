@@ -1,5 +1,5 @@
 import standard
-import login
+import F03_login
 # import readerwriter
 # import loader
 # still doesn't work, need to debug
@@ -20,7 +20,7 @@ def search_my_game(ownership_data: list[list[str]], user_data: list[list[str]],g
     for i in range(1, standard.length(ownership_data)):
 
         # if user id in kepemilikan.csv == user id of currently logged in user
-        if ownership_data[i][1] == user_data[login.user_line_index][0]:  # should be user_data[login.user_line_index][0]
+        if ownership_data[i][1] == user_data[F03_login.user_line_index][0]:  # should be user_data[login.user_line_index][0]
             user_game_id = standard.append(user_game_id, ownership_data[i][0])  # Append game id
 
     if standard.length(user_game_id) == 0:

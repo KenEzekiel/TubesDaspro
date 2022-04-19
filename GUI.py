@@ -4,13 +4,23 @@ import tkinter
 
 # Local library
 import standard
-import F15_load
 import readerwriter as rw
-import history
-import login
-import topup
-import register
-import search_my_game
+import F02_register
+import F03_login
+import F04_add_game
+import F05_change_game
+import F06_change_stock
+import F07_game_listing
+import F08_buy_game
+import F09_list_game
+import F10_search_my_game
+import F11_search_game_at_store
+import F12_topup
+import F13_history
+import F14_help
+import F15_load
+import F16_saver
+import F17_exit
 
 
 #---------- Main Program Function ------------
@@ -54,7 +64,6 @@ user_callable_commands = [
 
 logged_in = False
 
-# the function still doesn't work. it will always make logged_in = False everytime u call it. pls fix if u have any idea, i'm really sleepy rn lol
 def inputCommand():
     global logged_in
     command = input_command.get()
@@ -68,94 +77,125 @@ def inputCommand():
             print(f"You are not logged in. Please log in first. Enter \"help\" for more info.")
 
         elif command == 'help':
-            pass
+            F14_help.help("", F15_load.save_folder)
 
             last_index = command_field.index("end")
             command_field.insert(last_index, command)
+            print("")
 
         elif command == 'login':
-            login_valid = login.login(F15_load.save_folder, data[3])
+            login_valid = F03_login.login(F15_load.save_folder, data[3])
             if login_valid:
                 global user_info
                 last_idx = output_field.index('end')
-                user_info = data[3][login.user_line_index]
+                user_info = data[3][F03_login.user_line_index]
                 output_field.insert(last_idx, 'Successfully logged in')
                 print('Successfully logged in')
                 logged_in = True
 
                 last_index = command_field.index("end")
                 command_field.insert(last_index, command)
+                print("")
 
     else:
 
         if command in admin_callable_commands and command not in user_callable_commands and user_info[4] == 'Admin':
 
             if command == 'register':
-                register.register(F15_load.save_folder, data[3])
+                F02_register.register(F15_load.save_folder, data[3])
                 last_idx = output_field.index('end')
                 output_field.insert(last_idx, 'Successfully registered new user')
 
             elif command == 'add_game':
-                pass
+                data[0] = F04_add_game.add_game(data[0])
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "Added game")
+
 
             elif command == 'change_game':
-                pass
+                F05_change_game.change_game(data[0])
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "Changed game")
+
 
             elif command == 'change_stock':
-                pass
+                F06_change_stock.change_stock(data[0])
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "Changed game stock")
+
 
             elif command == "topup":
-                topup.topup(data[3])
-                print(data[3])
+                global data
+                F12_topup.topup(data=data[3])
+                #print(data[3])
                 last_idx = output_field.index("end")
                 output_field.insert(last_idx, "User balance updated")
 
             last_index = command_field.index("end")
             command_field.insert(last_index, command)
+            print("")
 
         elif command in user_callable_commands and command not in admin_callable_commands and user_info[4] == 'User':
             
             if command == 'buy_game':
-                pass
+                F08_buy_game.buy_game(saldo=data[3][F03_login.user_line_index][5], game_data=data[0], my_game=data[1])
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "Bought a game")
 
             elif command == 'list_my_game':
-                pass
+                F09_list_game.list_game(data=data[1])
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "All of your games are printed")
 
             elif command == 'search_my_game':
-                search_my_game.search_my_game(data[1], data[3], data[0])
+                F10_search_my_game.search_my_game(data[1], data[3], data[0])
                 last_idx = output_field.index("end")
                 output_field.insert(last_idx, "Search result printed")
 
             elif command == 'history':
-                history.historyFromMatrix(data[2])
+                F13_history.historyFromMatrix(data[2])
                 last_idx = output_field.index("end")
                 output_field.insert(last_idx, "History matrix printed")
 
             last_index = command_field.index("end")
             command_field.insert(last_index, command)
+            print("")
 
         elif command in user_callable_commands and command in admin_callable_commands:
             
             if command == 'login':
-                pass
+                print("already logged in")
 
             elif command == 'list_available_game':
-                pass
+                F07_game_listing.sorting(data=data[0])
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "List of all available game printed")
 
             elif command == 'search_at_store':
-                pass
+                F11_search_game_at_store.search_game_at_store(data=data[0])
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "Searched the store")
 
             elif command == 'help':
-                pass
+                user = user_info[1]
+                save_folder = F15_load.save_folder
+                F14_help.help(user, save_folder)
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "Printed Help")
 
             elif command == 'save':
-                pass
+                F16_saver.save(data)
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "Saved data")
 
             elif command == 'exit':
-                pass
+                F17_exit.exit(data)
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "Bye bye")
 
             last_index = command_field.index("end")
             command_field.insert(last_index, command)
+            print("")
     
     
 #--------------- TKINTER ---------------------

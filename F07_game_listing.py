@@ -128,4 +128,4 @@ data =[["headings"], ["GAME001","binomo","action","3000",17000,6], ["GAME002" ,"
 # sorted = price_descending(data)
 # print(sorted)
 
-sorting(data)
+# sorting(data)

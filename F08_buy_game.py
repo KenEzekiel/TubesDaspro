@@ -98,7 +98,9 @@ def buy_game(money, game_data : list, my_game: list) :
                 print("Game dengan ID " + str(id) + " berhasil dibeli!")
 
 # Examples regarding usage
+"""
 saldo = 100000
 data = [["headings"], ["GAME001","BNMO - Play Along With Crypto","Adventure","2022", 100000, 6], ["GAME069","Python Gemink","Programming","1991", 69000, 0], ["GAME666","Hehehe","Comedy","2012", 666000, 5]]
 mine = [["headings"], ["GAME001", "BNMO - Play Along With Crypto", "Adventure", "2022", 100000]]
 buy_game(saldo, data, mine)
+"""

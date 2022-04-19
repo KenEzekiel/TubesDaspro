@@ -11,7 +11,7 @@ Noel Christoffel Simbolon (16521355)
 {F08 F09} P
 {F10 F11} N
 {F12 F13} K
-{F14} N
+{F14} K
 {F15 F16} K
 {F17} P
 

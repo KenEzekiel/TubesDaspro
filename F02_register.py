@@ -1,5 +1,5 @@
 import standard
-import cipher
+import B01_cipher
 import readerwriter
 
 
@@ -41,7 +41,7 @@ def register(save_folder: str, user_data: list[list[str]]):
     password = input('Enter password: ')
 
     id = standard.length(user_data)
-    ciphered_password = cipher.encrypt(password)
+    ciphered_password = B01_cipher.encrypt(password)
     role = 'User'  # Register can only add a user, not admin
     balance = 0  # Initial balance is always 0
 
