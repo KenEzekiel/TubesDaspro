@@ -59,3 +59,12 @@ def decrypt(ciphered: str) -> str:
             password += char
 
     return password
+
+"""
+password = input("enter password: ")
+print("password:", password)
+encrypted = encrypt(password)
+print("encrypted:", encrypted)
+decrypted = decrypt(encrypted)
+print("decrypted:", decrypted)
+"""

@@ -5,7 +5,7 @@
     }
 
 {FUNCTION/PROCEDURE DEFINITION}
-Function function_topup (input username : string, input balance : integer, input user_data : array) -> array
+Function function_topup (input username : string, input balance : integer, input user_data : array of array) -> array of array
     {Function to topup the user's balance}
     
     {LOCAL DICTIONARY}
@@ -39,7 +39,7 @@ Function function_topup (input username : string, input balance : integer, input
     else
         output("Username", username, "not found")
 
-Function topup (input data : array) -> array
+Function topup (input data : array of array) -> array of array
     {Function to get input and inputs it into the function_topup}
 
     {LOCAL DICTIONARY}
