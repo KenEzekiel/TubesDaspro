@@ -13,7 +13,7 @@ def register(save_folder: str, user_data: list[list[str]]):
     name = input('Enter name: ')
     username = input('Enter username: ')
 
-    # Loops unti the username is valid
+    # Loops until the username is valid
     while True:
 
         try:
