@@ -48,3 +48,8 @@ def register(save_folder: str, user_data: list[list[str]]):
     new_user = [id, username, name, ciphered_password, role, balance]
 
     readerwriter.writer(save_folder, 'user.csv', new_user)
+
+"""
+user_data = readerwriter.reader("save-file-1", "user.csv")
+register("save-file-1", user_data)
+"""

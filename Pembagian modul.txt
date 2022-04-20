@@ -9,7 +9,8 @@ Noel Christoffel Simbolon (16521355)
 {F02 F03} N
 {F04 F05 F06 F07} M
 {F08 F09} P
-{F10 F11} N
+{F10} N
+{F11} M
 {F12 F13} K
 {F14} K
 {F15 F16} K
@@ -22,6 +23,7 @@ B03 M
 Module tambahan:
 Standard Library Module (N)
 Read-write to database Module (K)
+role-validator (K)
 
 Timeline
 Penyelesaian modul - maks 16 April 2022
@@ -32,3 +34,18 @@ N = Noel Christoff
 M = Melvin Kent
 S = Sri Prana
 K = Kenneth Ezekiel
+
+TESTER
+Module Noel : Ken
+Module Melvin : Sri
+Module Sri : Noel
+Module Ken : Melvin
+
+1. Test jalan/tidak program (di file sendiri dan di implementasi GUI.py)
+2. Screenshot (Per screenshot itu berisi input, output, dan validasi jika ada input yang salah)
+Screenshot dilakukan untuk file sendiri dan implementasi GUI.py
+
+TO DO LIST
+- Notal per modul
+- Laporan
+- Testing
