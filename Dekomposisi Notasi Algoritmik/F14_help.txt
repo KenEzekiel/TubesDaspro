@@ -1,0 +1,53 @@
+{DICTIONARY}
+    {
+    
+    function is_admin (user, save_folder) -> Boolean
+    }
+
+{FUNCTION/PROCEDURE DEFINITION}
+Procedure help (input user : string, input save_folder : string)
+    
+    {Procedure to print the instructions for the main program}
+    
+    {I.S. user is defined, save-folder is defined, role_validator function is defined
+    F.S. Help instructions are printed}
+
+    {LOCAL DICTIONARY}
+    {
+    is_user_admin : boolean
+    }
+
+    {ALGORITHM}
+    is_user_admin = is_admin (user, save_folder)
+
+    if is_user_admin = True then
+        output("========== HELP ==========")
+        output("")
+        output("1. register - Register a new user")
+        output("2. login - Log in to the program")
+        output("3. add_game - Adding a game to the database")
+        output("4. change_game - Changing a game in the database")
+        output("5. change_stock - Changing the stock of a game in the database")
+        output("6. list_available_game - Gives a list of all the available game in the store")
+        output("7. search_at_store - Searches the store for a game")
+        output("8. topup - Top ups the balance of a user")
+        output("9. help - Prints this menu")
+        output("10. save - Saves the current working database")
+        output("11. exit - Exits the program")
+    else
+        output("========== HELP ==========")
+        output("")
+        output("before logging in:")
+        output("1. login - Log in to the program")
+        output("2. help - prints this menu")
+        output("")
+        output("after logging in:")
+        output("1. list_available_game - Gives a list of all the available game in the store")
+        output("2. buy_game - Buys a game with the current balance")
+        output("3. list_my_game - Lists owned games")
+        output("4. search_my_game - Searches owned games")
+        output("5. search_at_store - Searches the store for a game")
+        output("6. history - Prints the transaction history")
+        output("7. help - Prints this menu")
+        output("8. save - Saves the current working database")
+        output("9. exit - Exits the program")
