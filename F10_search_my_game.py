@@ -1,7 +1,7 @@
 import standard
 import F03_login
 # import readerwriter
-# import loader
+# import F15_load
 # still doesn't work, need to debug
 
 
@@ -62,6 +62,6 @@ def search_my_game(ownership_data: list[list[str]], user_data: list[list[str]],g
             print(f'{p}. {q[0].ljust(max_char_length[0])} | {q[1].ljust(max_char_length[1])} | {q[4].ljust(max_char_length[4])} | {q[2].ljust(max_char_length[2])} | {q[3].ljust(max_char_length[3])}')
 
 # filenames = ["game.csv", "kepemilikan.csv", "riwayat.csv", "user.csv"]
-# data = [readerwriter.reader(loader.save_folder, file) for file in filenames]
+# data = [readerwriter.reader(F15_load.save_folder, file) for file in filenames]
 
 # search_my_game(data[1], data[3], data[0])
