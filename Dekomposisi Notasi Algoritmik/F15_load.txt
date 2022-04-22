@@ -1,0 +1,15 @@
+{DICTIONARY}
+    {
+    
+    function ArgumentParser
+    function walk
+    }
+
+{ALGORITHM}
+parser <- ArgumentParser()
+parser.add_argument("folder", help="the save file that is want to be loaded")
+
+args <- parser.parse_args()
+
+save_folder <- args.folder
+all_folder <- next(walk("Database"))[1]
