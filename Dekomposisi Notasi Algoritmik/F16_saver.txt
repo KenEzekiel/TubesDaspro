@@ -17,8 +17,8 @@ Procedure saver (input folder : string, input data : array)
 
     {LOCAL DICTIONARY}
     {
-    path <- string
-    exist <- boolean
+    path : string
+    exist : boolean
     }
 
     {ALGORITHM}
