@@ -8,8 +8,8 @@ def login(save_folder: str, user_data: list[list[str]]):
     Function for login
     """
 
-    username = input('Masukkan username: ')
-    password = input('Masukkan password: ')
+    username = input('Enter username: ')
+    password = input('Enter password: ')
 
     user_valid = False
 

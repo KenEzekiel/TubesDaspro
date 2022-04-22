@@ -45,17 +45,15 @@ def is_lower(string: str) -> bool:
         return False
 
 
-def numbered_list(list_: list, start=0) -> list:
+def enum(list_: list, start=0):
     """
-    Returns a list containing a count (from start which defaults to 0) and the values obtained from iterating over a list.
+    Works the same way as the built-in function enumerate(). Returns an enumerate object. 
     """
     n = start
 
     for elem in list_:
-        elem = n, elem
+        yield n, elem
         n += 1
-
-    return list_
 
 
 # def join_list(string: str, iterable) -> str:
