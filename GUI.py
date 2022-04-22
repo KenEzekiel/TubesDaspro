@@ -109,7 +109,7 @@ def inputCommand():
         if command in admin_callable_commands and command not in user_callable_commands and user_info[4] == 'Admin':
 
             if command == 'register':
-                F02_register.register(F15_load.save_folder, data[3])
+                F02_register.register(data[3])
                 last_idx = output_field.index('end')
                 output_field.insert(last_idx, 'Successfully registered new user')
 

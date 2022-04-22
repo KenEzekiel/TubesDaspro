@@ -4,7 +4,7 @@ import readerwriter
 
 
 # user_data is the user.csv of a save folder
-def register(save_folder: str, user_data: list[list[str]]):
+def register(user_data: list[list[str]]):
     """
     Procedure to add a list of id, username, name, ciphered password, role, and balance of user
     to the user.csv of a save file.
@@ -47,7 +47,7 @@ def register(save_folder: str, user_data: list[list[str]]):
 
     new_user = [id, username, name, ciphered_password, role, balance]
 
-    readerwriter.writer(save_folder, 'user.csv', new_user)
+    user_data = standard.append(user_data, new_user)
 
 """
 user_data = readerwriter.reader("save-file-1", "user.csv")
