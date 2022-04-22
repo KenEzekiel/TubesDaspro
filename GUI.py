@@ -5,6 +5,9 @@ import tkinter
 # Local library
 import standard
 import readerwriter as rw
+import B01_cipher
+import B02_magicconch
+import B03_TicTacToe
 import F02_register
 import F03_login
 import F04_add_game
@@ -46,7 +49,9 @@ admin_callable_commands = [
     'topup',
     'help',
     'save',
-    'exit'
+    'exit',
+    'magicconch',
+    'tictactoe'
 ]
 
 user_callable_commands = [
@@ -59,7 +64,9 @@ user_callable_commands = [
     'history',  # riwayat in F13
     'help',  
     'save',
-    'exit'
+    'exit',
+    'magicconch',
+    'tictactoe'
 ]
 
 logged_in = False
@@ -191,6 +198,19 @@ def inputCommand():
                 F17_exit.exit(data)
                 last_idx = output_field.index("end")
                 output_field.insert(last_idx, "Bye bye")
+
+            elif command == 'magicconch':
+                question = input("What do you want to ask the magic conch? \n")
+                output = B02_magicconch.magicconch()
+                print(output)
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "The Magic Conch gives its wisdom")
+            
+            elif command == 'tictactoe':
+                B03_TicTacToe.tictactoe()
+                last_idx = output_field.index("end")
+                output_field.insert(last_idx, "Playing TicTacToe")
+
 
             last_index = command_field.index("end")
             command_field.insert(last_index, command)

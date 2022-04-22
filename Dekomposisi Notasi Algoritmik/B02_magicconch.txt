@@ -1,0 +1,41 @@
+{DICTIONARY}
+    {
+    
+    function time () -> integer
+    }
+
+{FUNCTION/PROCEDURE DEFINITION}
+Function magicconch () -> string
+    {Function that generates a random number with LCG and returns a string based on the random number}
+    
+    {LOCAL DICTIONARY}
+    {
+    x, a, c, m, state : integer
+    }
+
+    {ALGORITHM}
+    x <- time.time()
+    a <- 3
+    c <- 1
+    m <- 7
+    state <- round(((a*x) + c) mod 7)
+
+    {States and outputs}
+    if (state == 0) then
+        -> "Coba lagi."
+    else if (state == 1) then
+        -> "Ya."
+    else if (state == 2) then
+        -> "Tidak."
+    else if (state == 3) then
+        -> "Mungkin."
+    else if (state == 4) then
+        -> "Jangan deh."
+    else if (state == 5) then
+        -> "Tanya lagi nanti."
+    else if (state == 6) then
+        -> "Terserah dah."
+    else if (state == 7) then
+        -> "Coba tanya doswal."
+    else
+        do nothing
