@@ -20,6 +20,8 @@ def help(user: str, save_folder: str):
         print("9. help - Prints this menu")
         print("10. save - Saves the current working database")
         print("11. exit - Exits the program")
+        print("12. magicconch : Hears what the great magic conch has to say")
+        print("13. tictactoe : Play TicTacToe")
     else:
         print("========== HELP ==========")
         print("")
@@ -37,3 +39,5 @@ def help(user: str, save_folder: str):
         print("7. help - Prints this menu")
         print("8. save - Saves the current working database")
         print("9. exit - Exits the program")
+        print("10. magicconch : Hears what the great magic conch has to say")
+        print("11. tictactoe : Play TicTacToe")

@@ -1,0 +1,70 @@
+{DICTIONARY}
+    {
+    
+    procedure writeline
+    function os
+    save_folder : string
+
+    }
+
+{FUNCTION/PROCEDURE DEFINITION}
+Procedure saver (input folder : string, input data : array)
+    
+    {Procedure to save the data in the program to the database}
+    
+    {I.S. folder is defined, data (matrix) is defined
+    F.S. The working database is saved to the csv}
+
+    {LOCAL DICTIONARY}
+    {
+    path : string
+    exist : boolean
+    }
+
+    {ALGORITHM}
+    path <- "Database/{folder}"
+    exist <- os.path.exists(path)
+
+    if exist then
+    {overwrite the data}
+        writeline(folder, "game.csv", data[0])
+        writeline(folder, "kepemilikan.csv", data[1])
+        writeline(folder, "riwayat.csv", data[2])
+        writeline(folder, "user.csv", data[3])
+    else
+    {make a new folder}
+        open(path/files, "w")   # Make a new file for every files
+        writeline(folder, "game.csv", data[0])
+        writeline(folder, "kepemilikan.csv", data[1])
+        writeline(folder, "riwayat.csv", data[2])
+        writeline(folder, "user.csv", data[3])
+
+
+
+Procedure save (input data : list)
+    {Procedure to ask whether to save in the same save folder or a different one}
+    
+    {I.S. saver is defined, data is defined
+    F.S. the saver runs with a folder defined (new/existing)}
+
+    {LOCAL DICTIONARY}
+    {
+    is_new_folder, new_folder, folder : string
+    }
+
+    {ALGORITHM}
+    is_new_folder <- input("Do you wish to save to a new folder? (y/n) ")
+
+    while (is_new_folder != "y") and (is_new_folder != "Y") and (is_new_folder != "n") and (is_new_folder != "N") do
+        {Input Validation}
+
+        output("Unknown input. Please choose between (y/n)")
+        is_new_folder <- input("Do you wish to save to a new folder? (y/n) ")
+    
+    if (is_new_folder == "y") or (is_new_folder == "Y") then
+        new_folder <- input("folder name: ")
+        saver(new_folder, data)
+
+    elif (is_new_folder == "n") or (is_new_folder == "N") then
+        folder <- save_folder
+        saver(folder, data)

@@ -21,14 +21,14 @@ B03 M
 Module tambahan:
 Standard Library Module (N)
 Read-write to database Module (K)
-role-validator (K)
+Role-validator Module (K)
 
 Timeline
 Penyelesaian modul - maks 16 April 2022
 Penyelesaian laporan dan GUI - 23 April 2022
 
 Keterangan :
-N = Noel Christoff
+N = Noel Christoffel Simbolon
 M = Melvin Kent
 S = Sri Prana
 K = Kenneth Ezekiel
@@ -46,4 +46,4 @@ Screenshot dilakukan untuk file sendiri dan implementasi GUI.py
 TO DO LIST
 - Notal per modul
 - Laporan
-- Testing
+- Testing (SS + Video)
