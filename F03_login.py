@@ -1,11 +1,12 @@
 import B01_cipher
 import standard
-import readerwriter
+
 
 # user_data is the user.csv of a save folder
-def login(save_folder: str, user_data: list[list[str]]):
+def login(user_data: list[list[str]]) -> bool:
     """
-    Function for login
+    Returns True if the username and password is correct and it is on the database.
+    Returns False otherwise.
     """
 
     username = input('Enter username: ')
@@ -31,9 +32,3 @@ def login(save_folder: str, user_data: list[list[str]]):
     else:
         print('Username not found or wrong password')
         return False
-
-"""
-user_data = readerwriter.reader("save-file-1", "user.csv")
-logged_in = login('save-file-1', user_data)
-print(logged_in)
-"""
