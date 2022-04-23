@@ -1,0 +1,137 @@
+DICTIONARY
+    function length (input) -> integer
+    { Function to calculate the length of an object. }
+
+    function append (list_ : array, input) -> array
+    { Function to append an input to a list. }
+
+    function enum (list_ : array, start=0):
+    { Works the same way as the built-in function enumerate(). Returns an enumerate object. }
+
+    user_line_index : integer  { global variable on what index is the current user's username stored in user.csv }
+
+
+{ not to be imported }
+[ data is filtered list, index is the location of the targetted attribute, criteria is the previously asked input by search_game_at_store procedure }
+function filter_str (data : array, index : integer, criteria : string) -> array
+    { Function to create a list filtered by a string attribute }
+
+LOCAL DICTIONARY
+    temp : array of array of string
+    i : integer  { iteration variable }
+
+ALGORITHM
+    if (criteria = "") then
+        temp <- data
+    else { not (criteria = "") }
+        temp <- [] { temp is for hosting matching datas }
+
+        { traversing to find matching attribute and appending the list to temp }
+        i traversal [0..length(data) - 1]
+            if (criteria = data[i][index]) then
+                temp <- append(temp, data[i])
+
+    -> temp 
+
+
+{ not to be imported }
+function get_max_char_length (filtered_game_data : array of array of string) -> array of integer
+    { Function to get the maximum character length for each column in the filtered game data
+    (i.e. filtered game.csv according to kepemilikan.csv and user-inputted game_id and release_year) }
+
+LOCAL DICTIONARY
+    filtered_game_data_char_length : array
+    char_length_list : array
+    L : array of string
+    m, n : integer
+    max_length_of_column : integer
+    o : array
+    filtered_game_data_max_char_length : array
+
+ALGORITHM
+    filtered_game_data_char_length <- []
+
+    L traversal filtered_game_data
+        char_length_list <- []
+        m traversal [0..4]  { Don't index the stock of game }
+
+            { char_length_list is a list of character length for each game entry }
+            char_length_list <- append(char_length_list, length(L[m]))
+
+        { filtered_game_data_char_length is the complete list of list of character length for the filtered game data }
+        filtered_game_data_char_length <- append(filtered_game_data_char_length, char_length_list)
+
+
+    filtered_game_data_max_char_length <- []
+
+    n traversal [0..4]
+
+        max_length_of_column <- 0
+        o traversal filtered_game_data_char_length
+            if (o[n] > max_length_of_colum) then
+                max_length_of_column <- o[n]
+        
+        filtered_game_data_max_char_length <- append(filtered_game_data_max_char_length, max_length_of_column) 
+
+    -> filtered_game_data_max_char_length   
+
+
+{ ownership_data is the kepemilikan.csv of a save folder, user_data is the user.csv, while game_data is the game.csv }
+function search_my_game (ownership_data, user_data, game_data : array of array of string) 
+    { Procedure that prints user-owned games based on its ID and release year. }
+
+LOCAL DICTIONARY
+    game_id, release_year : string  { user inputted filter }
+    user_game_id : array of string
+    i : integer  { iteration variable }
+    game_data_output : array of array of string
+    filtered_game_data_output_by_game_id : array of array of string
+    filtered_game_data_output_by_release_year : array of array of string
+    filtered_game_data : array of array of string
+    filtered_game_data_max_char_length : array of integer
+    p : integer
+    q : array of array of string
+
+ALGORITHM
+    input (game_id.upper())
+    input(release_year)
+
+    user_game_id <- []  { All Game ID of the currently logged in user }
+
+    { Loop for every entry in kepemilikan.csv excluding the first line }
+    i traversal [1..length(ownership_data) - 1]
+
+        { if user id in kepemilikan.csv == user id of currently logged in user, then append the game id of the game with matchin user id }
+        if (ownership_data[i][1] = user_data[user_line_index][0]) then
+            user_game_id <- append(user_game_id, ownership_data[i][0])
+
+    if (length(user_game_id) = 0) then
+        output ('You have no game in your inventory')
+    
+    else { not (length(user_game_id) = 0) }
+        
+        game_data_output <- []
+
+        j traversal user_game_id
+            { Loop for every entry in game.csv excluding the first line }
+            k traversal [1..length(game_data) - 1]
+
+                if (j = game_data[k][0]) then  { if user game id matches game id in game.csv }
+                    game_data_output <- append(game_data_output, game_data[k])
+
+        { Filter based on game_id and release_year }
+        filtered_game_data_output_by_game_id <- filter_str(game_data_output, 0, game_id)
+        filtered_game_data_output_by_release_year <- filter_str(filtered_game_data_output_by_game_id, 3, release_year)
+        filtered_game_data <- filtered_game_data_output_by_release_year
+
+        if (length(filtered_game_data) = 0) then
+            output ('You have no game in your inventory that pass the filter')
+        
+        else { not (length(filtered_game_data) = 0) }
+        
+            filtered_game_data_max_char_length <- get_max_char_length(filtered_game_data)
+
+            output ('\nGames in your inventory that meet the filter:')
+
+            p, q traversal enum(filtered_game_data, start=1)
+                output (f'{p}. {q[0].ljust(filtered_game_data_max_char_length[0])} | {q[1].ljust(filtered_game_data_max_char_length[1])} | {q[4].ljust(filtered_game_data_max_char_length[4])} | {q[2].ljust(filtered_game_data_max_char_length[2])} | {q[3].ljust(filtered_game_data_max_char_length[3])}')

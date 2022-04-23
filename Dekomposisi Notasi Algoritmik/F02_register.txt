@@ -1,0 +1,60 @@
+DICTIONARY
+    function length (input) -> integer
+    { Function to calculate the length of an object. }
+
+    function append (list_ : array, input) -> array
+    { Function to append an input to a list. }
+
+    function encrypt (password : string) -> string
+    { Encrypts user password using the Affine cipher. }
+
+
+function register (user_data : array of array of string) -> array of array of string
+    { Function to add a list of id, username, name, ciphered password, role, and balance of user
+    to the loaded user.csv data on the main program (GUI.py). }
+
+LOCAL DICTIONARY
+    name, username, ciphered_password, role : string
+    id, balance : integer
+
+ALGORITHM
+    input (name)
+    input (username)
+
+    { Loops until the username is valid }
+    while (True) do
+
+        try
+            { Username valid characters (-, _, 0-9, A-Z, a-z) validation }
+            char traversal username
+                if (not (ord(char) = 45 or ord(char) = 95 or 48 <= ord(char) <= 57 or
+                        65 <= ord(char) <= 90 or 97 <= ord(char) <= 122)) then  { -, _, 0-9, A-Z, a-z respectively }
+                    output ('Username is not valid. Please only use letters, numbers, underscore (_), and dash (-).')
+                    raise ValueError
+
+            { Checks if the username is already present }
+            { Loop for every entry in user.csv excluding the first line }
+            i traversal [1..length(user_data) - 1]
+                if (username =s user_data[i][1]) then
+                    output (f'Username "{username}" already exists, please select a different username.\n')
+                    raise ValueError
+
+        except ValueError
+            input (username)
+
+        else
+            output ('Username is available!')
+            break
+
+    input (password)
+
+    id <- length(user_data)
+    ciphered_password <- encrypt(password)
+    role <- 'User'  { Register can only add a user, not admin }
+    balance <- 0  { Initial balance is always 0 }
+
+    new_user <- [id, username, name, ciphered_password, role, balance]
+
+    user_data <- append(user_data, new_user)
+
+    -> user_data

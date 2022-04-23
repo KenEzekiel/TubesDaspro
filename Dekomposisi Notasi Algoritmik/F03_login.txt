@@ -1,0 +1,42 @@
+DICTIONARY
+    function decrypt (ciphered : string) -> string
+    { Decrypts ciphered user password using the Affine cipher. }
+
+    function length (input) -> integer
+    { Function to calculate the length of an object. }
+
+    user_line_index : integer  { global variable on what index is the current user's username stored in user.csv }
+
+
+function login (user_data : array of array of string) -> boolean
+    { Returns True if the username and password is correct and it is on the database.
+    Returns False otherwise. }
+
+LOCAL DICTIONARY
+    user_valid : boolean  { username present in database or not }
+    username, password : string
+
+ALGORITHM
+    input (username)
+    input (password)
+
+    user_valid <- False
+
+    { Checks if the username is present in database }
+    { Loop for every line in file user.csv (index 3 on folder save) (ignore the first line) }
+    i traversal [1..length(user_data) - 1]
+        if (username = user_data[i][1]) then
+            user_valid <- True
+            global user_line_index
+            user_line_index <- i
+
+    if (user_valid) then
+        if (decrypt(user_data[user_line_index][3]) = password) then
+            output (f'Welcome to BNMO, {username}!')
+            -> True
+        else { not (decrypt(user_data[user_line_index][3]) = password) }
+            output ('Username not found or wrong password')
+            -> False
+    else { not (user_valid) }
+        output ('Username not found or wrong password')
+        -> False

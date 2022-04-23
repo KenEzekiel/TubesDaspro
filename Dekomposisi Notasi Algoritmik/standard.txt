@@ -1,0 +1,69 @@
+{ Standard function library (manual implementation of python functions that is not allowed to be used) }
+
+
+function length (input) -> integer
+    { Function to calculate the length of an object. }
+
+LOCAL DICTIONARY
+    count : integer
+    i  { tipe tergantung input }
+
+ALGORITHM
+    count <- 0
+
+    i traversal input
+        count <- count + 1
+
+    -> count
+
+
+function append (list_ : array, input) -> array
+    { Function to append an input to a list. }
+
+LOCAL DICTIONARY
+
+
+ALGORITHM
+    list_ <- list_ + [input]
+
+    -> list_
+
+
+function is_upper (string : string) -> boolean
+    { Function to check if a string consists entirely of uppercase letters. }
+
+LOCAL DICTIONARY
+
+
+ALGORITHM
+    if (string = string.upper()) then
+        -> True
+    else { not (string = string.upper()) }
+        -> False
+
+
+function is_lower (string : string) -> boolean
+    { Function to check if a string consists entirely of lowercase letters. }
+
+LOCAL DICTIONARY
+
+
+ALGORITHM
+    if (string = string.lower()) then
+        -> True
+    else { not (string = string.lower()) }
+        -> False
+
+
+function enum (list_ : array, start=0):
+    { Works the same way as the built-in function enumerate(). Returns an enumerate object. }
+
+LOCAL DICTIONARY
+    n : integer  { user option on what number the enumeration starts }
+
+ALGORITHM
+    n <- start
+
+    elem traversal list_
+        yield n, elem
+        n <- n + 1

@@ -1,0 +1,70 @@
+DICTIONARY
+    function is_lower (string : string) -> boolean
+    { Function to check if a string consists entirely of lowercase letters. }
+
+
+function encrypt (password : string) -> string
+    { Encrypts user password using the Affine cipher. }
+
+LOCAL DICTIONARY
+    a, b : integer  { cipher keys }
+    ciphered : string  { ciphered password }
+
+ALGORITHM
+    { Hardcoded key }
+    a <- 17
+    b <- 9
+    ciphered <- ''
+    
+    { e(x) = (ax + b) mod m }
+    char traversal password
+
+        if (97 <= ord(char) <= 122 or 65 <= ord(char) <= 90) then
+            if (is_lower(char)) then
+                ciphered <- ciphered + chr(((a * (ord(char) - 97) + b) % 26) + 97)
+            else  { is_upper(char) }
+                ciphered <- ciphered + chr(((a * (ord(char) - 65) + b) % 26) + 65)
+
+        else  { not (97 <= ord(char) <= 122 or 65 <= ord(char) <= 90) }
+            ciphered <- ciphered + char
+
+    -> ciphered
+
+
+function decrypt (ciphered : string) -> string
+    { Decrypts ciphered user password using the Affine cipher. }
+
+LOCAL DICTIONARY
+    a, b : integer  { cipher keys }
+    i : integer
+    password : string
+
+ALGORITHM
+    { Hardcoded key }
+    a <- 17
+    b <- 9
+    i <- 0
+    password <- ''
+
+    { Finding a^(-1) which is the multiplicative inverse of a }
+    multiplicative_inverse <- None
+    while (multiplicative_inverse = None) do
+        if (((i * 26) + 1) / a = ((i * 26) + 1) // a) then
+            multiplicative_inverse <- int(((i * 26) + 1) / a)
+            break
+        else { not (((i * 26) + 1) / a = ((i * 26) + 1) // a) }
+            i <- i + 1
+    
+    { d(x) = a^(-1)(x - b) mod m }
+    char traversal ciphered
+
+        if (97 <= ord(char) <= 122 or 65 <= ord(char) <= 90) then
+            if (is_lower(char)) then
+                password <- password + chr(((multiplicative_inverse * ((ord(char) - 97) - b)) % 26) + 97)
+            else  { is_upper(char) }
+                password <- password + chr(((multiplicative_inverse * ((ord(char) - 65) - b)) % 26) + 65)
+
+        else { not (97 <= ord(char) <= 122 or 65 <= ord(char) <= 90) }
+            password <- password + char
+
+    -> password
