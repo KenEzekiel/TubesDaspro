@@ -68,9 +68,22 @@ def search_game_at_store (game_data : list) :
         print("There is no game at store that matches the criteria.")
 
     else :
+        # adding header to filtered data
+        header = ["ID", "NAME", "CATEGORY", "PURCHASE YEAR", "PRICE", "STOCK"]
+
+        temp = ["*" for i in range(standard.length(filtered)+1)]  
+        temp[0] = header 
+        for i in range (standard.length(filtered)) :
+            temp[i + 1] = filtered[i]
+        
+        filtered = temp
+
         # Generate parsing for non-empty filtered data
         for i in range (standard.length(filtered)): 
-            print(str(i+1) + ".", end=" ")
+            if i == 0 :                         # skip numbering for the header
+                print("  ", end= " ")           
+            else :                              # numbering for the list
+                print(str(i) + ".", end=" ")    
 
             for j in range (6) :
                 print(filtered[i][j], end="")
@@ -82,7 +95,8 @@ def search_game_at_store (game_data : list) :
                 
                 print((" " * (character_amount- standard.length(str(filtered[i][j])))), "| ", end="")
             print("")
-
+"""
 # Example on how to use 
-# data =[["headings"], ["GAME001","binomo","action","3000",17000,6], ["GAME002","oscta","adventure","3001",17300,6], ["GAME003","mario","adventure","1900",10000,5]]
-# search_game_at_store(data)
+data =[["header"], ["GAME001","binomo","action","3000",17000,6], ["GAME002","oscta","adventure","3001",17300,6], ["GAME003","mario","adventure","1900",10000,5]]
+search_game_at_store(data)
+"""

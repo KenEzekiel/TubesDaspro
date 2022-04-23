@@ -35,7 +35,7 @@ def new_game(game_data : list) -> list :
         else :
             complete = True
 
-    new_index = index_constructor(game_data)      # generating index for the new game by fetching the latest index from the database + 1
+    new_index = index_constructor(game_data)      # generating id for the new game by fetching the latest id from the database + 1
     new_data = [new_index , name, category, release_year, int(price), int(stock)]
 
     return new_data
@@ -55,7 +55,7 @@ def add_game (game_data : list) -> list :
 
 """
 # Example on how to use
-data =[["Heading"], ["GAME001","binomo","action","1990",17000,6], ["GAME002","oscta","action","1990",17000,6], ["GAME003","mario","adventure","2022",10000,5]]
+data =[["Header"], ["GAME001","binomo","action","1990",17000,6], ["GAME002","oscta","action","1990",17000,6], ["GAME003","mario","adventure","2022",10000,5]]
 data = add_game(data)
 print(data)
 

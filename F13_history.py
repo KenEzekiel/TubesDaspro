@@ -14,13 +14,23 @@ def history(hist_data: list):
         for i in range (1, standard.length(hist_data)) :                # traversing from 1 to skip data heading
             data_history[i-1] = hist_data[i]
 
-        data_history = standard.append(["NUM", "ID", "NAME", "PRICE", "USER ID", "PURCHASE YEAR"], data_history)
+        # adding header to data
+        header = ["ID", "NAME", "PRICE", "USER ID", "PURCHASE YEAR"]
+        temp = ["*" for i in range(standard.length(data_history)+1)]  
+        temp[0] = header 
+        for i in range (standard.length(data_history)) :
+            temp[i + 1] = data_history[i]
+        
+        data_history = temp
 
         # Generate parsing for non-empty data_history list
         for i in range (standard.length(data_history)): 
-            print(str(i+1) + ".", end=" ")
+            if i == 0 :                         # skip numbering for the header
+                print("  ", end= " ")
+            else :                              # numbering for the list
+                print(str(i) + ".", end=" ")
 
-            for j in range (6) :
+            for j in range (5) :
                 print(data_history[i][j], end="")
                 character_amount = 0
 
@@ -33,6 +43,6 @@ def history(hist_data: list):
 
 """
 # Example on how to use
-data = [["Heading"],["1", "binomo", "15000", "3", "1990"]]
+data = [["Header"],["1", "binomo", "15000", "3", "1990"]]
 history(data)
 """

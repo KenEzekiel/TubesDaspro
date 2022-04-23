@@ -1,14 +1,16 @@
 import standard
 
+# not to be imported
 def temporary_data (game_data : list) :
     """
     Function to generate temporary list for hosting data without changing the source
     """
     data = ["*" for i in range(standard.length(game_data)-1)]     
-    for i in range (1, standard.length(game_data)) :                # traversing from 1 to skip data heading
+    for i in range (1, standard.length(game_data)) :                # traversing from 1 to skip data header
         data[i-1] = game_data[i]
     return data
 
+# not to be imported
 def year_ascending(game_data : list) :
     """
     Function to sort data based on release year in ascending order
@@ -28,6 +30,7 @@ def year_ascending(game_data : list) :
 
     return sorted
 
+# not to be imported
 def year_descending(game_data : list) :
     """
     Function to sort data based on release year in descending order
@@ -47,6 +50,7 @@ def year_descending(game_data : list) :
 
     return sorted
 
+# not to be imported
 def price_ascending(game_data : list) :
     """
     Function to sort data based on price in ascending order
@@ -66,6 +70,7 @@ def price_ascending(game_data : list) :
 
     return sorted
 
+# not to be imported
 def price_descending(game_data : list) :
     """
     Function to sort data based on price in ascending order
@@ -110,9 +115,23 @@ def sorting (game_data : list) :
         else :
             print("Invalid sorting mode. Please try again!")
 
+    # adding header to sorted data
+    header = ["ID", "NAME", "CATEGORY", "PURCHASE YEAR", "PRICE", "STOCK"]
+
+    temp = ["*" for i in range(standard.length(sorted)+1)]  
+    temp[0] = header 
+    for i in range (standard.length(sorted)) :
+        temp[i + 1] = sorted[i]
+    
+    sorted = temp
+
     # Generate parsing for sorted data
     for i in range (standard.length(sorted)): 
-        print(str(i+1) + ".", end=" ")
+        if i == 0 :                         # skip numbering for the header
+            print("  ", end= " ")
+        else :                              # numbering for the list
+            print(str(i) + ".", end=" ")
+
         for j in range (6) :
             print(sorted[i][j], end="")
             character_amount = 0
@@ -123,9 +142,8 @@ def sorting (game_data : list) :
             print((" " * (character_amount- standard.length(str(sorted[i][j])))), "| ", end="")
         print("")
 
-
-data =[["headings"], ["GAME001","binomo","action","3000",17000,6], ["GAME002" ,"oscta","action","3001",17300,6], ["GAME003","mario","adventure","1900",10000,5]]
-# sorted = price_descending(data)
-# print(sorted)
-
-# sorting(data)
+"""
+# Example on how to use
+data =[["header"], ["GAME001","binomo","action","3000",17000,6], ["GAME002" ,"oscta","action","3001",17300,6], ["GAME003","mario","adventure","1900",10000,5]]
+sorting(data)
+"""
