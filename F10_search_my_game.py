@@ -4,7 +4,7 @@ import F03_login
 
 # not to be imported
 # data is filtered list, index is the location of the targetted attribute, criteria is the previously asked input by search_game_at_store procedure
-def filter_str (data : list, index : int, criteria : str) -> list:
+def filter_str(data : list, index : int, criteria : str) -> list:
     """
     Function to create a list filtered by a string attribute
     """
@@ -23,7 +23,7 @@ def filter_str (data : list, index : int, criteria : str) -> list:
 
 
 # not to be imported
-def get_max_char_length(filtered_game_data : list[list[str]]):
+def get_max_char_length(filtered_game_data : list[list[str]]) -> list[int]:
     """
     Function to get the maximum character length for each column in the filtered game data (i.e. filtered game.csv according to kepemilikan.csv and user-inputted game_id and release_year)
     """
@@ -66,7 +66,7 @@ def search_my_game(ownership_data: list[list[str]], user_data: list[list[str]],g
 
     user_game_id = []  # All Game ID of the currently logged in user
 
-    #  Loop for every entry in kepemilikan.csv excluding the first line
+    # Loop for every entry in kepemilikan.csv excluding the first line
     for i in range(1, standard.length(ownership_data)):
 
         # if user id in kepemilikan.csv == user id of currently logged in user, then append the game id of the game with matchin user id
@@ -81,12 +81,13 @@ def search_my_game(ownership_data: list[list[str]], user_data: list[list[str]],g
         game_data_output = []
 
         for j in user_game_id:
-            #  Loop for every entry in game.csv excluding the first line
+            # Loop for every entry in game.csv excluding the first line
             for k in range(1, standard.length(game_data)):
 
-                if j == game_data[k][0]:  # if user game id matches in game id in game.csv
+                if j == game_data[k][0]:  # if user game id matches game id in game.csv
                     game_data_output = standard.append(game_data_output, game_data[k])
 
+        # Filter based on game_id and release_year
         filtered_game_data_output_by_game_id = filter_str(game_data_output, 0, game_id)
         filtered_game_data_output_by_release_year = filter_str(filtered_game_data_output_by_game_id, 3, release_year)
         filtered_game_data = filtered_game_data_output_by_release_year
