@@ -3,10 +3,10 @@ import B01_cipher
 
 
 # user_data is the user.csv of a save folder
-def register(user_data: list[list[str]]):
+def register(user_data: list[list[str]]) -> list[list[str]]:
     """
     Function to add a list of id, username, name, ciphered password, role, and balance of user
-    to the user.csv of a save file.
+    to the loaded user.csv data on the main program (GUI.py).
     """
 
     name = input('Enter name: ')
@@ -20,7 +20,7 @@ def register(user_data: list[list[str]]):
             for char in username:
                 if not (ord(char) == 45 or ord(char) == 95 or 48 <= ord(char) <= 57 or
                         65 <= ord(char) <= 90 or 97 <= ord(char) <= 122):  # -, _, 0-9, A-Z, a-z respectively
-                    print('Username is not valid. Please only use letters, numbers, underscore (_), or dash (-).')
+                    print('Username is not valid. Please only use letters, numbers, underscore (_), and dash (-).')
                     raise ValueError
 
             # Checks if the username is already present
