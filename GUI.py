@@ -91,7 +91,7 @@ def inputCommand():
             print("")
 
         elif command == 'login':
-            login_valid = F03_login.login(F15_load.save_folder, data[3])
+            login_valid = F03_login.login(data[3])
             if login_valid:
                 global user_info
                 last_idx = output_field.index('end')
