@@ -1,6 +1,5 @@
 import standard
 import B01_cipher
-import readerwriter
 
 
 # user_data is the user.csv of a save folder
@@ -51,9 +50,3 @@ def register(user_data: list[list[str]]):
 
     return user_data
 
-"""
-user_data = readerwriter.reader("save-file-1", "user.csv")
-print(user_data)
-user_data = register(user_data)
-print(user_data)
-"""
