@@ -7,7 +7,7 @@ filenames = ["game.csv", "kepemilikan.csv", "riwayat.csv", "user.csv"]
 Struktur data untuk akses file per indeks = 
 ["game.csv", "kepemilikan.csv", "riwayat.csv", "user.csv"]
 """
-data = [readerwriter.reader("save-file-1", file) for file in filenames]
+# data = [readerwriter.reader("save-file-1", file) for file in filenames]
 
 # Not to be imported
 def saver(folder: str, data: list):
