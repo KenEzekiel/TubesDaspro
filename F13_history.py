@@ -1,18 +1,23 @@
 import standard
 
-def history(hist_data: list):
+def history(history_data: list, user_id: int):
     """
     Procedure to print the content of riwayat.csv array from the temporary data matrix
     """
+    user_hist_data = [history_data[0]]
+    # Loop to check for all the user's history data
+    for i in range(standard.length(history_data)):
+        if history_data[i][3] == user_id:
+            user_hist_data = standard.append(user_hist_data, history_data[i])
 
-    if standard.length(hist_data) == 1 :
-        print("Sorry, you haven't bougth any game yet. Enter buy_game to buy some game.")    
+    if standard.length(user_hist_data) == 1 :
+        print("Sorry, you haven't bought any game yet. Enter buy_game to buy some game.")    
     
     else :
         # generate a temporary list for hosting data without changing the source
-        data_history = ["*" for i in range(standard.length(hist_data)-1)]
-        for i in range (1, standard.length(hist_data)) :                # traversing from 1 to skip data heading
-            data_history[i-1] = hist_data[i]
+        data_history = ["*" for i in range(standard.length(user_hist_data)-1)]
+        for i in range (1, standard.length(user_hist_data)) :                # traversing from 1 to skip data heading
+            data_history[i-1] = user_hist_data[i]
 
         # adding header to data
         header = ["ID", "NAME", "PRICE", "USER ID", "PURCHASE YEAR"]

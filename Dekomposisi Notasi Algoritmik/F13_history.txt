@@ -1,13 +1,13 @@
 {DICTIONARY}
     {
-    hist_data : array of array
+    history_data : array of array
     
     function length (a) -> integer
     function append (a, array) -> array 
     }
 
 {FUNCTION/PROCEDURE DEFINITION}
-Procedure history (input hist_data : array of array)
+Procedure history (input hist_data : array of array, input user_id : integer)
 
     {Procedure to print the content of riwayat.csv array in the working data_history (temporary data matrix)}
 
@@ -16,18 +16,23 @@ Procedure history (input hist_data : array of array)
 
     {LOCAL DICTIONARY}
     {
+    user_hist_data : array of array
     data_history : array of array
     i, j, k, l, character_amount : integer
     }
 
     {ALGORITHM}
-    if length(hist_data) = 1 then
+    i traversal [1..length(history_data)]
+        if history_data[i][4] = user_id then
+            user_hist_data += history_data[i]
+
+    if length(user_hist_data) = 1 then
         output("Sorry, you haven't bougth any game yet. Enter buy_game to buy some game.)
     else
         {Generating a temporary list to host data without changing the original source}
         data_history <- array [1..length(hist_data)] of "*"
-        i traversal [2..length(hist_data)]
-            data_history[i] <- hist_data[i+1] 
+        i traversal [2..length(user_hist_data)]
+            data_history[i] <- user_hist_data[i+1] 
         
         data_history <- append (["HEADING"], data_history)
 

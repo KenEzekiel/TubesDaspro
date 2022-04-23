@@ -159,7 +159,7 @@ def inputCommand():
                 output_field.insert(last_idx, "Search result printed")
 
             elif command == 'history':
-                F13_history.historyFromMatrix(data[2])
+                F13_history.history(data[2], user_info[0])
                 last_idx = output_field.index("end")
                 output_field.insert(last_idx, "History matrix printed")
 
