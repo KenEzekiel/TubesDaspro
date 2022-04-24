@@ -1,0 +1,78 @@
+{DICTIONARY}
+    {
+    procedure length
+    type game :   < index : string,
+                    name : string,
+                    category : string,
+                    release_year: string
+                    harga : integer, 
+                    stock : integer >
+    game_data : array of game
+    }
+
+function index_constructor (game_data : array of game) -> array of game 
+    {I.S. game_data array of game is ordered based on game ID}
+    {F.S. new index is generated and returned}
+
+LOCAL DICTIONARY
+    prevoius_number, new_number : integer
+    new_index : string
+
+ALGORITHM
+    {Fetching the integers of the last Game ID}
+    previous_number <- int(game_data[length(game_data)-1][0][4]) * 100 + int(game_data[length(game_data)-1][0][5]) * 10 + int(game_data[length(game_data)-1][0][6])
+    
+    new_number <- previous_number + 1
+    if (new_number < 10) then
+        new_index <- "GAME00" + str(new_number)
+    else (if new_number < 100) then
+        new_index <- "GAME0" + str(new_number)
+    else 
+        new_index <- "GAME" + str(new_number)
+
+    -> new_index
+
+  
+function new_game (game_data : array of game) -> array of game 
+LOCAL DICTIONARY
+    complete : boolean
+    name, category, release_year : string
+    price, stock : integer
+    new_index : string
+    new_data : array of game
+
+ALGORITHM
+    {I.S. game_data is defined and have all the atrributes}
+    {F.S. new game data is collected and validated, index is generated automatically, new data is returned}
+
+    complete <- False 
+    while (complete = False) do                       # loop for input completeness validation
+        input(name, category, release_year, price, stock)
+  
+        {Input validation}
+        if (length(name) = 0) or (length(category) = 0) or (length(release_year) = 0) or (length(price) = 0) or (length(stock) = 0) then
+            output("Please insert all of the game information to be saved by BNMO.")
+        else 
+            complete <- True
+
+    new_index <- index_constructor(game_data)      # generating id for the new game by fetching the latest id from the database + 1
+    new_data <- [new_index , name, category, release_year, int(price), int(stock)]
+
+    -> new_data
+
+
+function add_game (game_data : array of game) -> array of game 
+    {I.S game_data is defined and have all the atrributes}
+    {F.S game_data array of game is returned with validated new game data}
+
+LOCAL DICTIONARY
+    new_data : array of game
+    game_data : array of game
+
+ALGORITHM
+    new_data <- new_game(game_data)
+    game_data <- append(game_data, new_data) 
+    output("Congratulations! Adding game succeded", new_data[1] + "." )
+
+    -> game_data
+

@@ -48,7 +48,7 @@ def add_game (game_data : list) -> list :
     
     new_data = new_game(game_data)
     game_data = standard.append(game_data, new_data) 
-    print("Congratulations! Adding game succeded", new_data[1] + "." )
+    print("Congratulations! Adding game", new_data[1] + "succeded." )
 
     return (game_data)
 
