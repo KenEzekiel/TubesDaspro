@@ -51,17 +51,8 @@ def sorting (game_data : list) :
     while valid == False :
         mode = str(input("Sorting mode [year+/year-/price+/price-]: "))
 
-        if mode == "year+" :
-            sorted = modes(game_data, "year+")
-            valid = True
-        elif mode == "year-" :
-            sorted = modes(game_data, "year-")
-            valid = True
-        elif mode == "price+" :
-            sorted = modes(game_data, "price+")
-            valid = True
-        elif mode == "price-" :
-            sorted = modes(game_data, "price-")
+        if mode == "year+" or mode == "year-" or mode == "price+" or mode == "price-" :
+            sorted = modes(game_data, mode)
             valid = True
         elif mode == "" :
             sorted =  temporary_data(game_data)
@@ -98,7 +89,7 @@ def sorting (game_data : list) :
 
 """
 # Example on how to use
-data =[["header"], ["GAME001","binomo","action","3000",17000,6], ["GAME002" ,"oscta","action","3001",17300,6], ["GAME003","mario","adventure","1900",10000,5]]
+data =[["header"], ["GAME001","binomo","action","2022",17000,6], ["GAME002" ,"oscta","action","2001",17300,6], ["GAME003","mario","adventure","1900",10000,5]]
 sorting(data)
 """
 data =[["header"], ["GAME001","binomo","action","3000",17000,6], ["GAME002" ,"oscta","action","3001",17300,6], ["GAME003","mario","adventure","1900",10000,5]]
