@@ -1,24 +1,15 @@
-import F16_saver
-import readerwriter
-# Bantuan yang dibutuhkan:
-# Jika y adalah input pertama, fungsi quit() berhasil
-# Tapi, jika diberi input selain y atau n, kenapa fungsinya malah terjebak di loop while meski sudah diberi input yang benar?
-
-filenames = ["game.csv", "kepemilikan.csv", "riwayat.csv", "user.csv"]
-data = [readerwriter.reader("save-file-1", file) for file in filenames]
-
-def exit(data: list[list[list]]):
-    # Misalkan, input tidak valid
-    # Maka program menanyakan ulang. Input harus berlaku untuk Y atau N dalam huruf kecil maupun besar.
-    x = str(input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n) "))
+def exit(x):
+    # Consider this, "the input is invalid"
+    # Should that confirmed to be true, the program will ask again.
+    # The only acceptable inputs are the letter "y" and "n" in both lowercase or uppercase.
     while (x != "y") and (x != "Y") and (x != "n") and (x != "N"):
         print("")
-        print("Input tidak dikenali. Mohon gunakan input berupa (y/n)")
-        x = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n) ")
-    if (x == "y") or (x == "Y"): # Menjalankan prosedur save dan program selesai
-        F16_saver.save(data)
+        print("Input unidentified. Please use one of the following (y/n) ")
+        x = input("Would you like to save the changes done? (y/n) ")
+    if (x == "y"): # Run the save procedure and finish the program
         quit()
-    elif (x == "n") or (x == "N"): # Menjalankan program seperti biasa dan program tidak selesai, meminta perintah berikutnya
-        print("Dimengerti, silahkan gunakan program lain yang tersedia.")
+    elif (x == "n"): # Run program as usual, allowing further use of other procedures available
+        print("Understood, please use the other option available for further changes.")
 
-#exit(data)
+x = str(input("Would you like to save the changes done? (y/n) "))
+exit(x)
