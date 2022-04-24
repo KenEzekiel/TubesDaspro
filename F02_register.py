@@ -49,4 +49,3 @@ def register(user_data: list[list[str]]) -> list[list[str]]:
     user_data = standard.append(user_data, new_user)
 
     return user_data
-

@@ -30,7 +30,7 @@ Penyelesaian laporan dan GUI - 23 April 2022
 Keterangan :
 N = Noel Christoffel Simbolon
 M = Melvin Kent
-S = Sri Prana
+P = Sri Prana
 K = Kenneth Ezekiel
 
 TESTER
