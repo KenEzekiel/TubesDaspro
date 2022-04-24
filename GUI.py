@@ -13,7 +13,7 @@ import F03_login
 import F04_add_game
 import F05_change_game
 import F06_change_stock
-import F07_game_listing
+import F07_list_available_game
 import F08_buy_game
 import F09_list_game
 import F10_search_my_game
@@ -173,7 +173,7 @@ def inputCommand():
                 print("already logged in")
 
             elif command == 'list_available_game':
-                F07_game_listing.sorting(data[0])
+                F07_list_available_game.sorting(data[0])
                 last_idx = output_field.index("end")
                 output_field.insert(last_idx, "List of all available game printed")
 
