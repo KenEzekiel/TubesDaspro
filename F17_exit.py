@@ -20,4 +20,4 @@ def exit(data: list[list[list]]):
         print("Understood, please use the other option available for further changes.")
 
 
-#exit(x)
+# exit(data)
