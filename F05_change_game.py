@@ -33,7 +33,10 @@ def change_game (game_data : list):
         price = str(input("Insert price: "))
         if price != "" :
             game_data[line_index][4] = int(price)
-        return game_data
+        
+        print("Changing game succeeded.")
+
+    return game_data
 
 """
 # Example on how to use

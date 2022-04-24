@@ -61,7 +61,7 @@ def price_ascending(game_data : list) :
         index_min = i
 
         for j in range (i+1, standard.length(sorted)):
-            if sorted[index_min][4] > sorted[j][4] :
+            if int(sorted[index_min][4]) > int(sorted[j][4]) :
                 index_min = j
 
         temp = sorted[index_min]
@@ -81,7 +81,7 @@ def price_descending(game_data : list) :
         index_min = i
 
         for j in range (i+1, standard.length(sorted)):
-            if sorted[index_min][4] < sorted[j][4] :
+            if int(sorted[index_min][4]) < int(sorted[j][4]) :
                 index_min = j
 
         temp = sorted[index_min]
@@ -95,7 +95,7 @@ def sorting (game_data : list) :
     valid = False 
 
     while valid == False :
-        mode = str(input("Sorting mode: "))
+        mode = str(input("Sorting mode [year+/year-/price+/price-]: "))
 
         if mode == "year+" :
             sorted = year_ascending(game_data)

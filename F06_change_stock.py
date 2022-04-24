@@ -1,8 +1,8 @@
 import standard
 
-def change_stock(game_data : list) :
+def change_stock(game_data : list) -> list :
     """
-    Procedure to change the amount of stock of an existing game, complete with input validation
+    Function to change the amount of stock of an existing game, complete with input validation
     """
     id = input("Insert game ID: ")
 
@@ -22,17 +22,17 @@ def change_stock(game_data : list) :
     else :    # ID is found
         added_stock = int(input("Insert amount: "))
 
-        if game_data[line_index][5] + added_stock < 0 :
-            print(game_data[line_index][1], "stock substraction failed due to not enough stock. Current stock:", game_data[line_index][5], "(<", "(abs(added_stock))" + ")" )
+        if int(game_data[line_index][5]) + added_stock < 0 :
+            print(game_data[line_index][1], "stock substraction failed due to not enough stock. Current stock:", game_data[line_index][5], "(<" , str(abs(added_stock)) , ")" )
         else :
-            game_data[line_index][5] += added_stock
+            game_data[line_index][5] = int(game_data[line_index][5]) + added_stock
             if added_stock == 0 :
                 print("No changes were made to the amount of", game_data[line_index][1] + "'s stock. Current stock:", game_data[line_index][5])
             elif added_stock > 0 :
                 print(game_data[line_index][1], "stock addition succeeded. Current stock:", game_data[line_index][5])
             else :      # added_stock < 0
                 print(game_data[line_index][1], "stock substraction succeeded. Current stock:", game_data[line_index][5])
-            return game_data
+    return game_data
                 
 """
 # Example on how to use
