@@ -2,8 +2,14 @@ DICTIONARY
 
 
 { not to be imported } 
-procedure ask_location(input/output matrix : array of array of strings, input pawn : str)
+procedure ask_location(input/output matrix : array of array of strings, input pawn : string)
     { Procedure to ask input for pawn location and validate it. }
+
+LOCAL ALGORITHM
+    valid : boolean
+    x, y : integer
+
+ALGORITHM
     valid <- False
     while (valid = False) do
         output("["+ pawn + "] turn: ")
@@ -100,7 +106,7 @@ ALGORITHM
 
             break
 
-        else then             { win == "" --> pawn haven't won }
+        else            { win == "" --> pawn haven't won }
             pass
 
         { turn == 9 is the last turn; tie statement will be skipped if there is already a winner }
