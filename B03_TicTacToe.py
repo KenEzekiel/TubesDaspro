@@ -1,5 +1,3 @@
-import standard
-
 # not to be imported    
 def ask_location(matrix : list, pawn : str):
     """

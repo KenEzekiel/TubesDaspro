@@ -1,0 +1,110 @@
+DICTIONARY
+
+
+{ not to be imported } 
+procedure ask_location(input/output matrix : array of array of strings, input pawn : str)
+    { Procedure to ask input for pawn location and validate it. }
+    valid <- False
+    while (valid = False) do
+        output("["+ pawn + "] turn: ")
+        input (x, y)
+
+        # Location validation
+        if not ((1<=x<=3) and (1<=y<=3) ) then   {the location does not exist}
+            output("Invalid location. Please try again!")
+        else                                {the location exists}
+
+            if (matrix[y-1][x-1] != "#") then     {the location is alrady occupied}
+                output("Location is already filled. Please try again!")
+            else                          {teh location is empty}
+                matrix[y-1][x-1] <- pawn
+                valid <- True
+
+{ not to be imported }
+function win_checker(matrix : array of array of strings, pawn : string) -> string
+    {Function to return state of winning of a pawn}
+
+LOCAL DICTIONARY
+    win : string
+
+ALGORITHM    
+    win <- ""        {win = "" --> pawn haven't won yet}
+
+    {horizontal win checker}
+    if ((matrix [0][0] = pawn) and (matrix [0][1] = pawn) and (matrix [0][2] = pawn)) or ((matrix [1][0] = pawn) and (matrix [1][1] = pawn) and (matrix [1][2] = pawn)) or ((matrix [2][0] = pawn) and (matrix [2][1] = pawn) and (matrix [2][2] = pawn)) then
+        win <- "horizontally"
+    
+    {vertical win checker}
+    else if ((matrix [0][0] = pawn) and (matrix [1][0] = pawn) and (matrix [2][0] = pawn)) or ((matrix [0][1] = pawn) and (matrix [1][1] = pawn) and (matrix [2][1] = pawn)) or ((matrix [0][2] = pawn) and (matrix [1][2] = pawn) and (matrix [2][2] = pawn)) then
+        win <- "vertically"
+    
+    # diagonal win checker
+    else if ((matrix [0][0] = pawn) and (matrix [1][1] = pawn) and (matrix [2][2] = pawn)) or ((matrix [0][2] = pawn) and (matrix [1][1] = pawn) and (matrix [2][0] = pawn)) then
+        win <- "diagonally"
+
+    -> win
+
+{ not to be imported }
+procedure status(input/output matrix : array of array of strings) 
+    {Procedure to print out board status.}
+
+LOCAL DICTIONARY
+    i,j : integer
+
+ALGORITHM
+    output("=============")
+    output("Board Status:")
+
+    {Generate parsing for matrix}
+    i traversal [0..2] 
+        output("|", end=" ")
+        j taversal [0..2]
+            output(matrix[i][j], end=" ")
+            output("|", end=" ")
+        output("")
+
+
+procedure tictactoe ()
+    {Procedure to simulate tic tac toe game}
+
+LOCAL DICTIONARY
+    matrix : array of array of characters
+    turn : integer
+    pawn, string : string
+
+ALGORITHM
+    matrix <- [["#", "#", "#"], ["#", "#", "#"], ["#", "#", "#"]]
+    turn <- 0 
+
+    while (turn<=9) do 
+        turn <- turn + 1
+
+        if turn%2 = 1 then
+            pawn <- "X"
+        else 
+            pawn <- "O"
+        
+        status(matrix)                  { print out board status }
+        ask_location(matrix, pawn)      { ask for user input of pawn location }
+
+        { check if pawn wins } 
+        win <- win_checker(matrix, pawn)
+        if win != "" then                  {(win = "")--> meaning pawn haven't won yet }
+            status(matrix)
+            if (win = "horizontally") then
+                output(pawn, "won horizontally. Victory applies to other row.")
+            else if (win = "vertically") then
+                output(pawn, "won vertically. Victory applies to other column.")
+            else           {win = "diagonally"}
+                output(pawn, "won diagonally. Victory applies to the opposite diagonal.")
+
+            break
+
+        else then             { win == "" --> pawn haven't won }
+            pass
+
+        { turn == 9 is the last turn; tie statement will be skipped if there is already a winner }
+        if (turn = 9) then
+            status(matrix)
+            output("Tie. There is no winner.")
+            break
