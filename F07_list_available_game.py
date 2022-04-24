@@ -1,3 +1,4 @@
+import string
 import standard
 
 # not to be imported
@@ -11,49 +12,9 @@ def temporary_data (game_data : list) :
     return data
 
 # not to be imported
-def year_ascending(game_data : list) :
+def modes(game_data : list, mode : string) :
     """
-    Function to sort data based on release year in ascending order
-    """
-    sorted = temporary_data(game_data)
-
-    for i in range (standard.length(sorted)-1) :                    # sorting data using selection sort algortihm
-        index_min = i
-
-        for j in range (i+1, standard.length(sorted)):
-            if int(sorted[index_min][3]) > int(sorted[j][3]) :
-                index_min = j
-
-        temp = sorted[index_min]
-        sorted[index_min] = sorted[i]
-        sorted[i] = temp
-
-    return sorted
-
-# not to be imported
-def year_descending(game_data : list) :
-    """
-    Function to sort data based on release year in descending order
-    """
-    sorted = temporary_data(game_data)
-
-    for i in range (standard.length(sorted)-1) :                    # sorting data using selection sort algortihm
-        index_min = i
-
-        for j in range (i+1, standard.length(sorted)):
-            if int(sorted[index_min][3]) < int(sorted[j][3]) :
-                index_min = j
-
-        temp = sorted[index_min]
-        sorted[index_min] = sorted[i]
-        sorted[i] = temp
-
-    return sorted
-
-# not to be imported
-def price_ascending(game_data : list) :
-    """
-    Function to sort data based on price in ascending order
+    Function to sort data based on modes
     """
     sorted = temporary_data(game_data)
     
@@ -61,8 +22,18 @@ def price_ascending(game_data : list) :
         index_min = i
 
         for j in range (i+1, standard.length(sorted)):
-            if int(sorted[index_min][4]) > int(sorted[j][4]) :
-                index_min = j
+            if mode == "year+" :
+                if int(sorted[index_min][3]) > int(sorted[j][3]) :
+                    index_min = j
+            elif mode == "year-" :
+                if int(sorted[index_min][3]) < int(sorted[j][3]) :
+                    index_min = j
+            elif mode == "price+" :
+                if int(sorted[index_min][4]) > int(sorted[j][4]) :
+                    index_min = j
+            elif mode == "price-" :
+                if int(sorted[index_min][4]) < int(sorted[j][4]) :
+                    index_min = j
 
         temp = sorted[index_min]
         sorted[index_min] = sorted[i]
@@ -70,25 +41,6 @@ def price_ascending(game_data : list) :
 
     return sorted
 
-# not to be imported
-def price_descending(game_data : list) :
-    """
-    Function to sort data based on price in ascending order
-    """
-    sorted = temporary_data(game_data)
-    
-    for i in range (standard.length(sorted)-1) :                    # sorting data using selection sort algortihm
-        index_min = i
-
-        for j in range (i+1, standard.length(sorted)):
-            if int(sorted[index_min][4]) < int(sorted[j][4]) :
-                index_min = j
-
-        temp = sorted[index_min]
-        sorted[index_min] = sorted[i]
-        sorted[i] = temp
-
-    return sorted
 
 def sorting (game_data : list) :
     """
@@ -100,16 +52,16 @@ def sorting (game_data : list) :
         mode = str(input("Sorting mode [year+/year-/price+/price-]: "))
 
         if mode == "year+" :
-            sorted = year_ascending(game_data)
+            sorted = modes(game_data, "year+")
             valid = True
         elif mode == "year-" :
-            sorted = year_descending(game_data)
+            sorted = modes(game_data, "year-")
             valid = True
         elif mode == "price+" :
-            sorted = price_ascending(game_data)
+            sorted = modes(game_data, "price+")
             valid = True
         elif mode == "price-" :
-            sorted = price_descending(game_data)
+            sorted = modes(game_data, "price-")
             valid = True
         elif mode == "" :
             sorted =  temporary_data(game_data)
@@ -149,3 +101,5 @@ def sorting (game_data : list) :
 data =[["header"], ["GAME001","binomo","action","3000",17000,6], ["GAME002" ,"oscta","action","3001",17300,6], ["GAME003","mario","adventure","1900",10000,5]]
 sorting(data)
 """
+data =[["header"], ["GAME001","binomo","action","3000",17000,6], ["GAME002" ,"oscta","action","3001",17300,6], ["GAME003","mario","adventure","1900",10000,5]]
+sorting(data)
