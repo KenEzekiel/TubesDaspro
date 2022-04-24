@@ -7,7 +7,7 @@ def ask_location(matrix : list, pawn : str):
     """
     valid = False
     while valid == False :
-        print(pawn, "turn: ")
+        print("["+ pawn + "] turn: ")
         x = int(input("X: "))
         y = int(input("Y: "))
 
@@ -17,7 +17,7 @@ def ask_location(matrix : list, pawn : str):
         else :                              # the location exists
 
             if matrix[y-1][x-1] != "#":     # the location is alrady occupied
-                print("Invalid location. Please try again!")
+                print("Location is already filled. Please try again!")
             else :                          # teh location is empty
                 matrix[y-1][x-1] = pawn
                 valid = True
@@ -101,4 +101,4 @@ def tictactoe ():
 
 
 # Example on how to use
-# tictactoe()
+tictactoe()
