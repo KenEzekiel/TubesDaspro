@@ -22,6 +22,7 @@ Procedure history (input hist_data : array of array, input user_id : integer)
     }
 
     {ALGORITHM}
+    {Loop to check for all the user's history data}
     i traversal [1..length(history_data)]
         if history_data[i][4] = user_id then
             user_hist_data += history_data[i]
