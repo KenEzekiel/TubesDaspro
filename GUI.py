@@ -17,7 +17,7 @@ import F07_list_available_game
 import F08_buy_game
 import F09_list_game
 import F10_search_my_game
-import F11_search_game_at_store
+import F11_search_at_store
 import F12_topup
 import F13_history
 import F14_help
@@ -41,11 +41,11 @@ data = [rw.reader(F15_load.save_folder, file) for file in filenames]
 admin_callable_commands = [
     'register',
     'login',
-    'add_game',  # tambah_game in F04
-    'change_game',  # ubah_game in F05
-    'change_stock',  # ubah_stok in F06
-    'list_available_game',  # list_game_toko in F07
-    'search_at_store',  # search_game_at_store in F11
+    'add_game',  # add_game in F04
+    'change_game',  # change_game in F05
+    'change_stock',  # change_stok in F06
+    'list_available_game',  # list_available_stock in F07
+    'search_at_store',  # search_at_store in F11
     'topup',
     'help',
     'save',
@@ -56,11 +56,11 @@ admin_callable_commands = [
 
 user_callable_commands = [
     'login',
-    'list_available_game',  # list_game_toko in F07
+    'list_available_game',  # list_availabel_game in F07
     'buy_game',
     'list_my_game',  # list_game in F09
     'search_my_game',
-    'search_at_store',  # search_game_at_store in F11
+    'search_at_store',  # search_at_store in F11
     'history',  # riwayat in F13
     'help',  
     'save',
@@ -178,7 +178,7 @@ def inputCommand():
                 output_field.insert(last_idx, "List of all available game printed")
 
             elif command == 'search_at_store':
-                F11_search_game_at_store.search_game_at_store(data=data[0])
+                F11_search_at_store.search_game_at_store(data[0])
                 last_idx = output_field.index("end")
                 output_field.insert(last_idx, "Searched the store")
 
