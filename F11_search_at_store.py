@@ -69,7 +69,7 @@ def search_game_at_store (game_data : list) :
 
     else :
         # adding header to filtered data
-        header = ["ID", "NAME", "CATEGORY", "PURCHASE YEAR", "PRICE", "STOCK"]
+        header = ["ID", "NAME", "CATEGORY", "RELEASE YEAR", "PRICE", "STOCK"]
 
         temp = ["*" for i in range(standard.length(filtered)+1)]  
         temp[0] = header 

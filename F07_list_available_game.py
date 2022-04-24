@@ -116,7 +116,7 @@ def sorting (game_data : list) :
             print("Invalid sorting mode. Please try again!")
 
     # adding header to sorted data
-    header = ["ID", "NAME", "CATEGORY", "PURCHASE YEAR", "PRICE", "STOCK"]
+    header = ["ID", "NAME", "CATEGORY", "RELEASE YEAR", "PRICE", "STOCK"]
 
     temp = ["*" for i in range(standard.length(sorted)+1)]  
     temp[0] = header 
