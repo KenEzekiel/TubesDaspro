@@ -11,7 +11,6 @@ function filter_str (data : array of array of string, index : integer, criteria 
     {Function to create a list filtered by a string attribute}
 
 LOCAL DICTIONARY
-    criteria : string
     temp : array of array of string
     i : integer
 
