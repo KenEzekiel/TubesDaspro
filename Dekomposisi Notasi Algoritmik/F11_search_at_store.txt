@@ -1,0 +1,106 @@
+DICTIONARY
+    function length (input) -> integer
+    { Function to calculate the length of an object. }
+
+    function append (list_ : array, input) -> array
+    { Function to append an input to a list. }
+
+{not to be imported}
+{data is filtered list, index is the location of the targetted attribute, criteria is the previously asked input by search_game_at_store procedure}
+function filter_str (data : array of array of string, index : integer, criteria : string) -> array of array of string
+    {Function to create a list filtered by a string attribute}
+
+LOCAL DICTIONARY
+    criteria : string
+    temp : array of array of string
+    i : integer
+
+ALGORITHM
+    if (criteria = "") then
+        temp <- data
+    else
+        temp <- [] # temp is for hosting matching datas
+
+        {traversing to find matching attribute and appending the list to temp}
+        i traversal[0..(length(data))]
+            if criteria == data[i][index] then
+                temp = append(temp, data[i])
+
+    -> temp 
+
+{not to be imported}
+{data is filtered list, index is the location of the targetted attribute, criteria is the previously asked input by search_game_at_store procedure}
+function filter_int (data : array of array of string, index : integer, criteria : string) -> array of array of string
+    {Function to create a list filtered by an integer attribute}
+
+    if (criteria = "") then
+        temp <- data
+    else
+        temp <- [] { temp is for hosting matching datas }
+
+        {traversing to find matching attribute and appending the list to temp}
+        i traversal[0..(length(data))]
+            if [int(criteria) = data[i][index]]
+                temp <- append(temp, data[i])
+
+    -> temp       
+
+{game_data is game.csv}
+procedure search_game_at_store (input game_data : array of array of string)
+    { Procedure to print out a filtered list based on criteria from user input }
+
+LOCAL DICTIONARY
+    id, name, category, release_year, price : string
+    header : array of string
+    filtered, temp : array of array of string
+    i, j, k, character_amount : integer
+
+
+ALGORITHM
+    input(id, name, category, release_year, price)
+
+    {generate a temporary list for hosting data without changing the source}
+    filtered <- ["*" i traversal [0..(length(game_data)-1)]]
+    i traversal [1..length(game_data)]                [traversing from 1 to skip data heading]
+        filtered[i-1] <- game_data[i]
+    
+    {each line creates a new filtered list from the previous filtered list}
+    filtered <- filter_str(filtered, 0, id)
+    filtered <- filter_str(filtered, 1, name)   
+    filtered <- filter_str(filtered, 2, category)
+    filtered <- filter_str(filtered, 3, release_year)
+    filtered <- filter_int(filtered, 4, price)
+    
+    output("List of games at store that match the criteria: ")
+
+    if (length(filtered) = 0) then
+        output("There is no game at store that matches the criteria.")
+
+    else
+        {adding header to filtered data}
+        header <- ["ID", "NAME", "CATEGORY", "RELEASE YEAR", "PRICE", "STOCK"]
+
+        temp <-  ["*" i traversal [0..(length(filtered)+1)]]
+        temp[0] <- header 
+        i traversal [0..length(filtered)]
+            temp[i + 1] <- filtered[i]
+        
+        filtered <- temp
+
+        {Generate parsing for non-empty filtered data}
+        i traversal [0..length(filtered)] 
+            if (i = 0) then                         {skip numbering for the header}
+                output("  ", end= " ")           
+            else                             {numbering for the list}
+                output(str(i) + ".", end=" ")    
+
+            j traversal [0..6]
+                output(filtered[i][j], end="")
+                character_amount <- 0
+
+                k traversal [0..length(filtered)]
+                    if (length(str(filtered[k][j])) > character_amount)
+                        character_amount <- length(str(filtered[k][j]))
+                
+                output((" " * (character_amount - length(str(filtered[i][j])))), "| ", end="")
+            output("")
