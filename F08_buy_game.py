@@ -29,7 +29,7 @@ def filter_str (data : list, index : int, criteria : str) -> list:
 
 # not to be imported
 # data is filtered list, index is the location of the targetted attribute, criteria is the previously asked input by search_game_at_store procedure
-def filter_int1 (data : list, index : int, criteria : str) -> list:
+def filter_int (data : list, index : int, criteria : str) -> list:
     """
     Function to create a list filtered by an integer attribute
     """
@@ -45,21 +45,6 @@ def filter_int1 (data : list, index : int, criteria : str) -> list:
                 temp = standard.append(temp, data[i])
 
     return temp
-
-def filter_int2 (data : list, index : int, criteria : str) -> list:
-    """
-    Function to create a list filtered by an integer attribute
-    """
-
-    if criteria == "" :
-        temp = data
-    else :
-        temp = [] # temp is for hosting matching datas
-
-        # traversing to find exceeding attribute and appending the list to temp
-        for i in range(standard.length(data)):
-            if int(criteria) <= data[i][index] :
-                temp = standard.append(temp, data[i])
 
 # game_data is game.csv
 # my_game still has unspecified excel file
@@ -83,8 +68,8 @@ def buy_game(money, game_data : list, my_game: list) :
     # each line creates a new filtered list from the previous filtered list
     filtered1 = filter_str(filtered1, 0, id)
     filtered2 = filter_str(filtered2, 0, id)
-    filtered1 = filter_int2(filtered1, 5, stock)
-    filtered1 = filter_int1(filtered1, 4, price)
+    filtered1 = filter_int(filtered1, 5, stock)
+    filtered1 = filter_int(filtered1, 4, price)
 
     if standard.length(filtered1) == 0 :
         print("Tidak ditemukan game dengan ID tersebut")
