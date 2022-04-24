@@ -91,7 +91,9 @@ def price_descending(game_data : list) :
     return sorted
 
 def sorting (game_data : list) :
-
+    """
+    Procedure to print out parsed and sorted game data
+    """
     valid = False 
 
     while valid == False :

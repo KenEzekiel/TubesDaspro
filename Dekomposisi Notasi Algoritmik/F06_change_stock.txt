@@ -1,6 +1,6 @@
 DICTIONARY
-    function append (list_ : array, input) -> array
-    { Function to append an input to a list. }
+    function length (input) -> integer
+    { Function to calculate the length of an object. }
 
 
 function change_stock(game_data : array of array of string ) -> array of array of string

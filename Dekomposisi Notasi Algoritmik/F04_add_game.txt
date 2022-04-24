@@ -1,17 +1,14 @@
-{DICTIONARY}
-    {
-    procedure length
-    type game :   < index : string,
-                    name : string,
-                    category : string,
-                    release_year: string
-                    harga : integer, 
-                    stock : integer >
-    game_data : array of game
-    }
+DICTIONARY
+    function length (input) -> integer
+    { Function to calculate the length of an object. }
 
-function index_constructor (game_data : array of game) -> array of game 
-    {I.S. game_data array of game is ordered based on game ID}
+    function append (list_ : array, input) -> array
+    { Function to append an input to a list. }
+
+
+{not to be imported}
+function index_constructor (game_data : array of array of string) -> array of array of string 
+    {I.S. game_data array of  is ordered based on game ID}
     {F.S. new index is generated and returned}
 
 LOCAL DICTIONARY
@@ -32,14 +29,14 @@ ALGORITHM
 
     -> new_index
 
-  
-function new_game (game_data : array of game) -> array of game 
+{not to be imported}
+function new_game (game_data : array of array of string) -> array of array of string
 LOCAL DICTIONARY
     complete : boolean
     name, category, release_year : string
     price, stock : integer
     new_index : string
-    new_data : array of game
+    new_data : array of string
 
 ALGORITHM
     {I.S. game_data is defined and have all the atrributes}
@@ -61,13 +58,13 @@ ALGORITHM
     -> new_data
 
 
-function add_game (game_data : array of game) -> array of game 
+function add_game (game_data : array of array of string) -> array of array of string
     {I.S game_data is defined and have all the atrributes}
-    {F.S game_data array of game is returned with validated new game data}
+    {F.S game_data array is returned with validated new game data}
 
 LOCAL DICTIONARY
-    new_data : array of game
-    game_data : array of game
+    new_data : array of string
+    game_data : array of array of string
 
 ALGORITHM
     new_data <- new_game(game_data)

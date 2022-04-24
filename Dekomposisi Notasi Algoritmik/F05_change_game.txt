@@ -1,32 +1,25 @@
-{DICTIONARY}
-    {
-    procedure length
-    type game :   < index : string,
-                    name : string,
-                    category : string,
-                    release_year: string
-                    harga : integer, 
-                    stock : integer >
-    game_data : array of game
-    }
+DICTIONARY
+    function length (input) -> integer
+    { Function to calculate the length of an object. }
+   
     
-def change_game (input/output game_data : array of game)
-    {I.S. game_data array of game is ordered based on game ID}
+procedure change_game (input/output game_data : array of array of string)
+    {I.S. game_data array is ordered based on game ID}
     {F.S. new index is generated and returned}
 
 LOCAL DICTIONARY
     id : string
     found : boolean
-    i, line_index : string
+    i, line_index : integer
 
 ALGORITHM
     input(id)
 
-    # finding matching game ID in game data matrix
+    {finding matching game ID in game data matrix}
     found <- False
-    i <- 2
-    while (found == False) and (i <= length(game_data)) do     # Loop for every line in file game.csv (index 3 on folder save) (ignore the first line)
-        if  (id = game_data[i+1][0]) then
+    i <- 1
+    while (found == False) and (i <= length(game_data)) do     {Loop for every line in file game.csv (index 3 on folder save) (ignore the first line)}
+        if  (id = game_data[i][0]) then
             line_index <- i
             found <- True
         else 

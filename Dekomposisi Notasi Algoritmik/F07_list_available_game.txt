@@ -1,0 +1,175 @@
+DICTIONARY
+    function length (input) -> integer
+    { Function to calculate the length of an object. }
+
+{not to be imported}
+function temporary_data(game_data : array of array of string) -> array of array of string
+    {Function to generate temporary list for hosting data without changing the source}
+
+LOCAL DICTIONARY
+    data : array of array of string
+    i : integer
+
+ALGORITHM
+    data <- ["*" i traversal [0..(length(game_data)-1)]]     
+    i traversal [1..length(game_data))]                {traversing from 1 to skip data header}
+        data[i-1] <- game_data[i]
+    -> data
+
+{not to be imported}
+function year_ascending(game_data : array of array of string) -> array of array of string
+    {Function to sort data based on release year in ascending order}
+
+LOCAL DICTIONARY
+    sorted, temp : array of array of integer
+    i, j, index_min : integer
+
+ALGORITHM
+    sorted <- temporary_data(game_data)
+
+    i traversal [0..(length(sorted)-1)]                    {sorting data using selection sort algortihm}
+        index_min <- i
+
+        j traversal [(i+1)..(length(sorted))]
+            if (int(sorted[index_min][3]) > int(sorted[j][3])) then
+                index_min <- j
+
+        temp <- sorted[index_min]
+        sorted[index_min] <- sorted[i]
+        sorted[i] <- temp
+
+    -> sorted
+
+{not to be imported}
+function year_descending(game_data : array of array of string) -> array of array of string
+    {Function to sort data based on release year in descending order}
+
+LOCAL DICTIONARY
+    sorted, temp : array of array of integer
+    i, j, index_min : integer
+
+ALGORITHM
+    sorted <- temporary_data(game_data)
+
+    i traversal [0..(length(sorted)-1)]                    {sorting data using selection sort algortihm}
+        index_min <- i
+
+        j traversal [(i+1)..(length(sorted))]
+            if (int(sorted[index_min][3]) < int(sorted[j][3])) then
+                index_min <- j
+
+        temp <- sorted[index_min]
+        sorted[index_min] <- sorted[i]
+        sorted[i] <- temp
+
+    -> sorted
+
+{not to be imported}
+function price_ascending(game_data : array of array of string) 
+    {Function to sort data based on price in ascending order}
+
+LOCAL DICTIONARY
+    sorted, temp : array of array of integer
+    i, j, index_min : integer
+
+ALGORITHM
+    sorted = temporary_data(game_data)
+    
+    i traversal [0..(length(sorted)-1)]                    {sorting data using selection sort algortihm}
+        index_min <- i
+
+        j traversal[(i+1)..(length(sorted))]
+            if (int(sorted[index_min][4]) > int(sorted[j][4])) then
+                index_min <- j
+
+        temp <- sorted[index_min]
+        sorted[index_min] <- sorted[i]
+        sorted[i] <- temp
+
+    -> sorted
+
+{not to be imported}
+function price_descending(game_data : array of array of string) -> array of array of string 
+    {Function to sort data based on price in ascending order}
+
+LOCAL DICTIONARY
+    sorted, temp : array of array of integer
+    i, j, index_min : integer
+
+ALGORITHM
+    sorted <- temporary_data(game_data)
+    
+    i traversal [0..(length(sorted)-1)]                    {sorting data using selection sort algortihm}
+        index_min <- i
+
+        j traversal [(i+1)..(length(sorted))]
+            if (int(sorted[index_min][4]) < int(sorted[j][4])) then
+                index_min <- j
+
+        temp <- sorted[index_min]
+        sorted[index_min] <- sorted[i]
+        sorted[i] <- temp
+
+    -> sorted
+
+
+procedure sorting (input game_data : array of array of string)
+    {Procedure to print out parsed and sorted game data}
+
+LOCAL DICTIONARY
+    valid : boolean
+    mode : string
+    sorted, temp : array of array of string
+    header : array of string
+    i, j, k, character_amount : integer
+
+ALGORITHM
+    valid <- False 
+
+    while (valid = False) do
+        input(mode)
+
+        if (mode == "year+") then
+            sorted <- year_ascending(game_data)
+            valid <- True
+        else if (mode = "year-") then
+            sorted <- year_descending(game_data)
+            valid <- True
+        else if (mode = "price+") then
+            sorted <- price_ascending(game_data)
+            valid <- True
+        else if (mode = "price-") then
+            sorted <- price_descending(game_data)
+            valid <- True
+        else if (mode = "") then
+            sorted <-  temporary_data(game_data)
+            valid <- True
+        else 
+            output("Invalid sorting mode. Please try again!")
+
+    {adding header to sorted data}
+    header <- ["ID", "NAME", "CATEGORY", "RELEASE YEAR", "PRICE", "STOCK"]
+
+    temp <- ["*" i traversal[0..(length(sorted)+1)]]  
+    temp[0] <- header 
+    i traversal [0..length(sorted)] 
+        temp[i + 1] <- sorted[i]
+    
+    sorted <- temp
+
+    {Generate parsing for sorted data}
+    i traversal [0..length(sorted)] 
+        if (i = 0) then                         {skip numbering for the header}
+            output("  ", end= " ")
+        else                               {numbering for the list}
+            output(str(i) + ".", end=" ")
+
+        j traversal [0..6]
+            output(sorted[i][j], end="")
+            character_amount <- 0
+            k traversal [0..length(sorted)]
+                if (length(str(sorted[k][j])) > character_amount) then
+                    character_amount <- length(str(sorted[k][j]))
+            
+            output((" " * (character_amount - length(str(sorted[i][j])))), "| ", end="")
+        output("")
