@@ -39,6 +39,23 @@ def register(user_data: list[list[str]]) -> list[list[str]]:
 
     password = input('Enter password: ')
 
+    # Loops until the password is valid
+    while True:
+
+        try:
+            # Password validation to not break user.csv
+            for char_pass in password:
+                if char_pass == ';':
+                    print('Password must not contain semicolon (;)')
+                    raise ValueError
+
+        except ValueError:
+            password = input('Enter password: ')
+
+        else:
+            print('Password is valid!')
+            break
+
     id = standard.length(user_data)
     ciphered_password = B01_cipher.encrypt(password)
     role = 'User'  # Register can only add a user, not admin

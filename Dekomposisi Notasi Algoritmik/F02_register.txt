@@ -14,7 +14,7 @@ function register (user_data : array of array of string) -> array of array of st
     to the loaded user.csv data on the main program (GUI.py). }
 
 LOCAL DICTIONARY
-    name, username, ciphered_password, role, char, password : string
+    name, username, ciphered_password, role, char, password, char_pass : string
     id, balance : integer
 
 ALGORITHM
@@ -47,6 +47,23 @@ ALGORITHM
             break
 
     input (password)
+
+    { Loops until the password is valid }
+    while (True) do
+
+        try
+            { Password validation to not break user.csv }
+            char_pass traversal password
+                if (char_pass = ';') then
+                    output ('Password must not contain semicolon (;)')
+                    raise ValueError
+
+        except ValueError
+            input (password)
+
+        else
+            output ('Password is valid!')
+            break
 
     id <- length(user_data)
     ciphered_password <- encrypt(password)
