@@ -2,7 +2,7 @@ import standard
 
 # not to be imported
 # data is filtered list, index is the location of the targetted attribute, criteria is the previously asked input by search_game_at_store procedure
-def filter_str (data : list, index : int, criteria : str) -> list:
+def filter_str (data : list[list[str]], index : int, criteria : str) -> list[list[str]]:
     """
     Function to create a list filtered by a string attribute
     """
@@ -21,7 +21,7 @@ def filter_str (data : list, index : int, criteria : str) -> list:
 
 # not to be imported
 # data is filtered list, index is the location of the targetted attribute, criteria is the previously asked input by search_game_at_store procedure
-def filter_int (data : list, index : int, criteria : str) -> list:
+def filter_int (data : list[list[str]], index : int, criteria : str) -> list[list[str]]:
     """
     Function to create a list filtered by an integer attribute
     """

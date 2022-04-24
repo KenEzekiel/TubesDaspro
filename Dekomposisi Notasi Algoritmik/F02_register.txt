@@ -14,7 +14,7 @@ function register (user_data : array of array of string) -> array of array of st
     to the loaded user.csv data on the main program (GUI.py). }
 
 LOCAL DICTIONARY
-    name, username, ciphered_password, role : string
+    name, username, ciphered_password, role, char, password : string
     id, balance : integer
 
 ALGORITHM

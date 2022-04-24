@@ -4,7 +4,7 @@ import F03_login
 
 # not to be imported
 # data is filtered list, index is the location of the targetted attribute, criteria is the previously asked input by search_game_at_store procedure
-def filter_str(data : list, index : int, criteria : str) -> list:
+def filter_str(data : list[list[str]], index : int, criteria : str) -> list[list[str]]:
     """
     Function to create a list filtered by a string attribute
     """
@@ -56,7 +56,7 @@ def get_max_char_length(filtered_game_data : list[list[str]]) -> list[int]:
 
 
 # ownership_data is the kepemilikan.csv of a save folder, user_data is the user.csv, while game_data is the game.csv
-def search_my_game(ownership_data: list[list[str]], user_data: list[list[str]],game_data: list[list[str]]):
+def search_my_game(ownership_data: list[list[str]], user_data: list[list[str]], game_data: list[list[str]]):
     """
     Procedure that prints user-owned games based on its ID and release year.
     """

@@ -13,7 +13,7 @@ DICTIONARY
 
 { not to be imported }
 [ data is filtered list, index is the location of the targetted attribute, criteria is the previously asked input by search_game_at_store procedure }
-function filter_str (data : array, index : integer, criteria : string) -> array
+function filter_str (data : array of array of string, index : integer, criteria : string) -> array of array of string
     { Function to create a list filtered by a string attribute }
 
 LOCAL DICTIONARY
@@ -77,7 +77,7 @@ ALGORITHM
 
 
 { ownership_data is the kepemilikan.csv of a save folder, user_data is the user.csv, while game_data is the game.csv }
-function search_my_game (ownership_data, user_data, game_data : array of array of string) 
+procedure search_my_game (ownership_data, user_data, game_data : array of array of string) 
     { Procedure that prints user-owned games based on its ID and release year. }
 
 LOCAL DICTIONARY
