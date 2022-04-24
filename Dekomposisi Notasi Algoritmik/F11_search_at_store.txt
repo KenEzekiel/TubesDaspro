@@ -32,7 +32,12 @@ ALGORITHM
 {data is filtered list, index is the location of the targetted attribute, criteria is the previously asked input by search_game_at_store procedure}
 function filter_int (data : array of array of string, index : integer, criteria : string) -> array of array of string
     {Function to create a list filtered by an integer attribute}
+    
+LOCAL DICTIONARY
+    temp : array of array of string
+    i : integer
 
+ALGORITHM
     if (criteria = "") then
         temp <- data
     else

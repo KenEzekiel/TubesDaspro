@@ -17,8 +17,8 @@ ALGORITHM
     -> data
 
 {not to be imported}
-function year_ascending(game_data : array of array of string) -> array of array of string
-    {Function to sort data based on release year in ascending order}
+function modes(game_data : array of array of string, mode : string) -> array of array of string
+    {Function to sort data based on modes}
 
 LOCAL DICTIONARY
     sorted, temp : array of array of integer
@@ -31,80 +31,18 @@ ALGORITHM
         index_min <- i
 
         j traversal [(i+1)..(length(sorted))]
-            if (int(sorted[index_min][3]) > int(sorted[j][3])) then
-                index_min <- j
-
-        temp <- sorted[index_min]
-        sorted[index_min] <- sorted[i]
-        sorted[i] <- temp
-
-    -> sorted
-
-{not to be imported}
-function year_descending(game_data : array of array of string) -> array of array of string
-    {Function to sort data based on release year in descending order}
-
-LOCAL DICTIONARY
-    sorted, temp : array of array of integer
-    i, j, index_min : integer
-
-ALGORITHM
-    sorted <- temporary_data(game_data)
-
-    i traversal [0..(length(sorted)-1)]                    {sorting data using selection sort algortihm}
-        index_min <- i
-
-        j traversal [(i+1)..(length(sorted))]
-            if (int(sorted[index_min][3]) < int(sorted[j][3])) then
-                index_min <- j
-
-        temp <- sorted[index_min]
-        sorted[index_min] <- sorted[i]
-        sorted[i] <- temp
-
-    -> sorted
-
-{not to be imported}
-function price_ascending(game_data : array of array of string) 
-    {Function to sort data based on price in ascending order}
-
-LOCAL DICTIONARY
-    sorted, temp : array of array of integer
-    i, j, index_min : integer
-
-ALGORITHM
-    sorted = temporary_data(game_data)
-    
-    i traversal [0..(length(sorted)-1)]                    {sorting data using selection sort algortihm}
-        index_min <- i
-
-        j traversal[(i+1)..(length(sorted))]
-            if (int(sorted[index_min][4]) > int(sorted[j][4])) then
-                index_min <- j
-
-        temp <- sorted[index_min]
-        sorted[index_min] <- sorted[i]
-        sorted[i] <- temp
-
-    -> sorted
-
-{not to be imported}
-function price_descending(game_data : array of array of string) -> array of array of string 
-    {Function to sort data based on price in ascending order}
-
-LOCAL DICTIONARY
-    sorted, temp : array of array of integer
-    i, j, index_min : integer
-
-ALGORITHM
-    sorted <- temporary_data(game_data)
-    
-    i traversal [0..(length(sorted)-1)]                    {sorting data using selection sort algortihm}
-        index_min <- i
-
-        j traversal [(i+1)..(length(sorted))]
-            if (int(sorted[index_min][4]) < int(sorted[j][4])) then
-                index_min <- j
+            if (mode = "year+") then
+                if (int(sorted[index_min][3]) > int(sorted[j][3])) then
+                    index_min <- j
+            else if (mode = "year-") then
+                if (int(sorted[index_min][3]) < int(sorted[j][3])) then
+                    index_min <- j
+            else if (mode ="price+") then
+                if int(sorted[index_min][4]) > int(sorted[j][4]) :
+                    index_min <- j
+            else if (mode = "price-") then
+                if int(sorted[index_min][4]) < int(sorted[j][4]) :
+                    index_min <- j
 
         temp <- sorted[index_min]
         sorted[index_min] <- sorted[i]
@@ -129,23 +67,12 @@ ALGORITHM
     while (valid = False) do
         input(mode)
 
-        if (mode == "year+") then
-            sorted <- year_ascending(game_data)
-            valid <- True
-        else if (mode = "year-") then
-            sorted <- year_descending(game_data)
-            valid <- True
-        else if (mode = "price+") then
-            sorted <- price_ascending(game_data)
-            valid <- True
-        else if (mode = "price-") then
-            sorted <- price_descending(game_data)
-            valid <- True
-        else if (mode = "") then
-            sorted <-  temporary_data(game_data)
-            valid <- True
+        if (mode == "year+") or (mode == "year-") or (mode == "price+") or (mode == "price-") then
+            sorted = modes(game_data, mode)
+            valid = True
         else 
             output("Invalid sorting mode. Please try again!")
+            
 
     {adding header to sorted data}
     header <- ["ID", "NAME", "CATEGORY", "RELEASE YEAR", "PRICE", "STOCK"]
