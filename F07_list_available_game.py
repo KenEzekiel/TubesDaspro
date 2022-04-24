@@ -92,5 +92,3 @@ def sorting (game_data : list) :
 data =[["header"], ["GAME001","binomo","action","2022",17000,6], ["GAME002" ,"oscta","action","2001",17300,6], ["GAME003","mario","adventure","1900",10000,5]]
 sorting(data)
 """
-data =[["header"], ["GAME001","binomo","action","3000",17000,6], ["GAME002" ,"oscta","action","3001",17300,6], ["GAME003","mario","adventure","1900",10000,5]]
-sorting(data)
